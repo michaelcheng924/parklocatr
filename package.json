@@ -1,0 +1,22 @@
+{
+  "name": "parklocatr",
+  "version": "1.0.0",
+  "description": "Discover parks",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/michaelcheng429/parklocatr.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michaelcheng429/parklocatr/issues"
+  },
+  "homepage": "https://github.com/michaelcheng429/parklocatr",
+  "dependencies": {
+    "express": "^4.12.3"
+  }
+}
