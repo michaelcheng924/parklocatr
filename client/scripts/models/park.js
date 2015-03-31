@@ -1,1 +1,3 @@
-
+var Park = function() {
+  
+}

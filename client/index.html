@@ -2,8 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
+  <!-- build:css app/app.css -->
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="styles/style.css">
+  <!-- endbuild -->
+
   <script type="text/javascript"
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCq6OFWZzYDAPNNkmejC23efI0LWcBSy-o">
   </script>
@@ -17,12 +21,15 @@
   <div id="map-canvas"></div>
   
   <!-- Bower Components -->
+  <!-- build:js app/vendor.js -->
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/underscore/underscore.js"></script>
   <script src="bower_components/backbone/backbone.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <!-- endbuild -->
 
-  <!-- js files -->
+  <!-- build:js app/app.js -->
   <script src="scripts/app.js"></script>
+  <!-- endbuild -->
 </body>
 </html>
