@@ -19,6 +19,7 @@
 
     <div class="park-view"></div>
     <div class="parks-view"></div>
+    <div class="park-view-template"></div>
   </div>
 
   <div id="map-canvas"></div>
@@ -37,12 +38,19 @@
   <script src="scripts/collections/Parks.js"></script>
   <script src="scripts/views/ParkView.js"></script>
   <script src="scripts/views/ParksView.js"></script>
+  <script src="../data/houstonparks.js"></script>
   <!-- endbuild -->
 
   <script>
     $(function() {
       var parkView = new ParkView();
       var parksView = new ParksView();
+      var count = 0;
+      _.each(houstonParks.features, function(item) {
+        console.log(count);
+        count++;
+        console.log(item.attributes);
+      })
     });
   </script>
 </body>
