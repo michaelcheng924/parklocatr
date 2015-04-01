@@ -43,14 +43,10 @@
 
   <script>
     $(function() {
+      var parks = new Parks(houstonParks.features);
       var parkView = new ParkView();
-      var parksView = new ParksView();
+      var parksView = new ParksView({collection: houstonParks.features});
       var count = 0;
-      _.each(houstonParks.features, function(item) {
-        console.log(count);
-        count++;
-        console.log(item.attributes);
-      })
     });
   </script>
 </body>

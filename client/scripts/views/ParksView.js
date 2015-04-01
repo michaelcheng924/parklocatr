@@ -6,6 +6,10 @@ var ParksView = Backbone.View.extend({
   },
 
   render: function() {
-    this.$el.append('parks view');
+    this.$el.html('<h2>Parks View</h2>').append(
+      this.collection.map(function(park) {
+        return new ParkView({model: park});
+      })
+    );
   }
 });
