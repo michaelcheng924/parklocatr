@@ -1,10 +1,13 @@
 var ParkView = Backbone.View.extend({
 
+  tagName: 'li',
+
   initialize: function() {
-    this.template = _.template('<div><%- Name %></div>');
+    this.template = _.template('<strong>Name: </strong><%- Name %>, <strong>X-Coordinate: </strong><%- X_Coordinate %>, <strong>Y-Coordinate: </strong><%- Y_Coordinate %>');
   },
 
   render: function() {
-    this.$el.html(this.template(this.model.attributes));
+    console.log(this.model.attributes.attributes);
+    return this.$el.html(this.template(this.model.attributes.attributes));
   }
 });

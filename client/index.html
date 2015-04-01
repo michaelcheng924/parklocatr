@@ -18,7 +18,7 @@
     <h1>Park Locatr</h1>
 
     <div class="park-view"></div>
-    <div class="parks-view"></div>
+    <ol class="parks-view"></ol>
     <div class="park-view-template"></div>
   </div>
 
@@ -45,7 +45,7 @@
     $(function() {
       var parks = new Parks(houstonParks.features);
       var parkView = new ParkView();
-      var parksView = new ParksView({collection: houstonParks.features});
+      var parksView = new ParksView({collection: parks});
       var count = 0;
     });
   </script>
