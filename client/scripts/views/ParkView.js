@@ -2,10 +2,10 @@ var ParkView = Backbone.View.extend({
   el: $('.park-view'),
 
   initialize: function() {
-    this.render();
+    this.template = _.template($('.park-view-template').html());
   },
 
   render: function() {
-    this.$el.append('test');
+    this.$el.html(this.template(this.model.attributes));
   }
 });
