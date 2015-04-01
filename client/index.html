@@ -16,6 +16,8 @@
 <body>
   <div class="container">
     <h1>Park Locatr</h1>
+
+    <div class="park-view"></div>
   </div>
 
   <div id="map-canvas"></div>
@@ -30,6 +32,15 @@
 
   <!-- build:js app/app.js -->
   <script src="scripts/app.js"></script>
+  <script src="scripts/models/Park.js"></script>
+  <script src="scripts/collections/Parks.js"></script>
+  <script src="scripts/views/ParkView.js"></script>
   <!-- endbuild -->
+
+  <script>
+    $(function() {
+      var parkView = new ParkView();
+    });
+  </script>
 </body>
 </html>
