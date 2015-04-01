@@ -18,6 +18,7 @@
     <h1>Park Locatr</h1>
 
     <div class="park-view"></div>
+    <div class="parks-view"></div>
   </div>
 
   <div id="map-canvas"></div>
@@ -35,11 +36,13 @@
   <script src="scripts/models/Park.js"></script>
   <script src="scripts/collections/Parks.js"></script>
   <script src="scripts/views/ParkView.js"></script>
+  <script src="scripts/views/ParksView.js"></script>
   <!-- endbuild -->
 
   <script>
     $(function() {
       var parkView = new ParkView();
+      var parksView = new ParksView();
     });
   </script>
 </body>
