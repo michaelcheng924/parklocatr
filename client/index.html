@@ -39,6 +39,7 @@
   <script src="scripts/collections/Parks.js"></script>
   <script src="scripts/views/ParkView.js"></script>
   <script src="scripts/views/ParksView.js"></script>
+  <script src="scripts/routers/Router.js"></script>
   <script src="data/houstonparks.js"></script>
   <!-- endbuild -->
 
@@ -47,7 +48,9 @@
       var parks = new Parks(houstonParks.features);
       var parkView = new ParkView();
       var parksView = new ParksView({collection: parks});
-      var count = 0;
+      var router = new Router();
+
+      Backbone.history.start();
     });
   </script>
 </body>
