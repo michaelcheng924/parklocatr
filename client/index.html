@@ -40,7 +40,7 @@
 
       infoWindow = new google.maps.InfoWindow();
       service = new google.maps.places.PlacesService(map);
-      
+
       var input = /** @type {HTMLInputElement} */(
           document.getElementById('pac-input'));
 
@@ -67,7 +67,9 @@
 
         // If the place has a geometry, then present it on a map.
         if (place.geometry.viewport) {
-          map.fitBounds(place.geometry.viewport);
+          map.setCenter(place.geometry.location);
+          map.setZoom(13);
+          // map.fitBounds(place.geometry.viewport);
         } else {
           map.setCenter(place.geometry.location);
           map.setZoom(17);  // Why 17? Because it looks good.
@@ -168,11 +170,13 @@
     function createMarker(place) {
       var marker = new google.maps.Marker({
         map: map,
+        animation: google.maps.Animation.DROP,
+        icon: 'images/park-icon.png',
         position: place.geometry.location,
-        icon: 'images/park-icon.png'
       });
 
-      google.maps.event.addListener(marker, 'mouseover', function() {
+      google.maps.event.addListener(marker, 'click', function() {
+        toggleBounce();
         service.getDetails(place, function(result, status) {
           if (status != google.maps.places.PlacesServiceStatus.OK) {
             alert(status);
@@ -186,6 +190,15 @@
           console.log(result);
         });
       });
+
+      function toggleBounce() {
+
+        if (marker.getAnimation() != null) {
+          marker.setAnimation(null);
+        } else {
+          marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
+      }
     }
 
     google.maps.event.addDomListener(window, 'load', initialize);
