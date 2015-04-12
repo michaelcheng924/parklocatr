@@ -1,58 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Search for up to 200 places with Radar Search</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places,visualization"></script>
+    <script>
+var map;
+var infoWindow;
+var service;
 
-  <link rel="icon" href="images/faviconpng.png">
-  <!-- build:css app/app.css -->
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-  <link rel="stylesheet" href="styles/style.css">
-  <!-- endbuild -->
+function initialize() {
+  map = new google.maps.Map(document.getElementById('map-canvas'), {
+    center: new google.maps.LatLng(-33.8668283734, 151.2064891821),
+    zoom: 15,
+    styles: [
+      {
+        stylers: [
+          { visibility: 'simplified' }
+        ]
+      },
+      {
+        elementType: 'labels',
+        stylers: [
+          { visibility: 'off' }
+        ]
+      }
+    ]
+  });
 
-  <script type="text/javascript"
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCq6OFWZzYDAPNNkmejC23efI0LWcBSy-o">
-  </script>
-  <title>Park Locatr</title>
-</head>
-<body>
-  <div class="container">
-    <h1>Park Locatr</h1>
-    
-    <div id="map-canvas"></div>
+  infoWindow = new google.maps.InfoWindow();
+  service = new google.maps.places.PlacesService(map);
 
-    <div class="park-view"></div>
-    <ol class="parks-view"></ol>
-    <div class="park-view-template"></div>
-  </div>
-  
-  <!-- Bower Components -->
-  <!-- build:js app/vendor.js -->
-  <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/underscore/underscore.js"></script>
-  <script src="bower_components/backbone/backbone.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-  <!-- endbuild -->
+  google.maps.event.addListenerOnce(map, 'bounds_changed', performSearch);
+}
 
-  <!-- build:js app/app.js -->
-  <script src="scripts/app.js"></script>
-  <script src="scripts/models/park.js"></script>
-  <script src="scripts/collections/Parks.js"></script>
-  <script src="scripts/views/ParkView.js"></script>
-  <script src="scripts/views/ParksView.js"></script>
-  <script src="scripts/routers/Router.js"></script>
-  <script src="data/houstonparks.js"></script>
-  <script src="data/houstonParksGooglePlaces.js"></script>
-  <!-- endbuild -->
+function performSearch() {
+  var request = {
+    bounds: map.getBounds(),
+    types: ['park']
+  };
+  service.radarSearch(request, callback);
+}
 
-  <script>
-    $(function() {
-      var parks = new Parks(houstonParks.features);
-      var parkView = new ParkView();
-      var parksView = new ParksView({collection: parks});
-      var router = new Router();
+function callback(results, status) {
+  if (status != google.maps.places.PlacesServiceStatus.OK) {
+    alert(status);
+    return;
+  }
+  for (var i = 0, result; result = results[i]; i++) {
+    createMarker(result);
+  }
+}
 
-      Backbone.history.start({pushState: true});
+function createMarker(place) {
+  var marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location,
+    icon: 'images/park-icon.png'/*{
+      // Star
+      path: 'M 0,-24 6,-7 24,-7 10,4 15,21 0,11 -15,21 -10,4 -24,-7 -6,-7 z',
+      fillColor: '#ffff00',
+      fillOpacity: 1,
+      scale: 1/4,
+      strokeColor: '#bd8d2c',
+      strokeWeight: 1
+    }*/
+  });
+
+  google.maps.event.addListener(marker, 'click', function() {
+    service.getDetails(place, function(result, status) {
+      if (status != google.maps.places.PlacesServiceStatus.OK) {
+        alert(status);
+        return;
+      }
+      infoWindow.setContent(result.name);
+      infoWindow.open(map, marker);
     });
-  </script>
-</body>
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
 </html>
