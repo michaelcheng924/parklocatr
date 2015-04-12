@@ -26,16 +26,21 @@
     <div id="map-canvas"></div>
 
         <script>
-
+    var map;
+    var infoWindow;
+    var service;
 // ================= AUTO-COMPLETE ================= //
     function initialize() {
       var mapOptions = {
         center: new google.maps.LatLng(37.6, -95.665),
         zoom: 4
       };
-      var map = new google.maps.Map(document.getElementById('map-canvas'),
+      map = new google.maps.Map(document.getElementById('map-canvas'),
         mapOptions);
 
+      infoWindow = new google.maps.InfoWindow();
+      service = new google.maps.places.PlacesService(map);
+      
       var input = /** @type {HTMLInputElement} */(
           document.getElementById('pac-input'));
 
@@ -88,6 +93,10 @@
 
         infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
         infowindow.open(map, marker);
+
+        console.log(place.geometry.location);
+
+        google.maps.event.addListenerOnce(map, 'bounds_changed', performSearch);
       });
 
       // Sets a listener on a radio button to change the filter type on Places
@@ -135,49 +144,49 @@
     //   google.maps.event.addListenerOnce(map, 'bounds_changed', performSearch);
     // }
 
-    // function performSearch() {
-    //   var request = {
-    //     bounds: map.getBounds(),
-    //     types: ['park']
-    //   };
-    //   service.radarSearch(request, callback);
-    // }
+    function performSearch() {
+      var request = {
+        bounds: map.getBounds(),
+        types: ['park']
+      };
+      service.radarSearch(request, callback);
+    }
 
-    // function callback(results, status) {
-    //   if (status != google.maps.places.PlacesServiceStatus.OK) {
-    //     alert(status);
-    //     return;
-    //   }
-    //   for (var i = 0, result; result = results[i]; i++) {
-    //     createMarker(result);
-    //     // service.getDetails(result, function(parkDetails, status) {
-    //     //   console.log(parkDetails);
-    //     // });
-    //   }
-    // }
+    function callback(results, status) {
+      if (status != google.maps.places.PlacesServiceStatus.OK) {
+        alert(status);
+        return;
+      }
+      for (var i = 0, result; result = results[i]; i++) {
+        createMarker(result);
+        // service.getDetails(result, function(parkDetails, status) {
+        //   console.log(parkDetails);
+        // });
+      }
+    }
 
-    // function createMarker(place) {
-    //   var marker = new google.maps.Marker({
-    //     map: map,
-    //     position: place.geometry.location,
-    //     icon: 'images/park-icon.png'
-    //   });
+    function createMarker(place) {
+      var marker = new google.maps.Marker({
+        map: map,
+        position: place.geometry.location,
+        icon: 'images/park-icon.png'
+      });
 
-    //   google.maps.event.addListener(marker, 'mouseover', function() {
-    //     service.getDetails(place, function(result, status) {
-    //       if (status != google.maps.places.PlacesServiceStatus.OK) {
-    //         alert(status);
-    //         return;
-    //       }
-    //       var name = '<strong>' + result.name + '</strong>';
-    //       var address = '<div>' + result.address_components[0].long_name + ' ' + result.address_components[1].long_name + '<br>' + result.address_components[2].long_name + ', ' + result.address_components[3].short_name + ' ' + result.address_components[5].long_name + '</div>';
+      google.maps.event.addListener(marker, 'mouseover', function() {
+        service.getDetails(place, function(result, status) {
+          if (status != google.maps.places.PlacesServiceStatus.OK) {
+            alert(status);
+            return;
+          }
+          var name = '<strong>' + result.name + '</strong>';
+          var address = '<div>' + result.address_components[0].long_name + ' ' + result.address_components[1].long_name + '<br>' + result.address_components[2].long_name + ', ' + result.address_components[3].short_name + ' ' + result.address_components[5].long_name + '</div>';
           
-    //       infoWindow.setContent('<div class="info-window">' + name + address + '</div>');
-    //       infoWindow.open(map, marker);
-    //       console.log(result);
-    //     });
-    //   });
-    // }
+          infoWindow.setContent('<div class="info-window">' + name + address + '</div>');
+          infoWindow.open(map, marker);
+          console.log(result);
+        });
+      });
+    }
 
     google.maps.event.addDomListener(window, 'load', initialize);
 
