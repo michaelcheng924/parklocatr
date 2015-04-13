@@ -121,10 +121,10 @@ function createMarker(place) {
       
       infoWindow.setContent('<div class="info-window">' + result.name + '</div>');
       infoWindow.open(map, marker);
-      // $('.park-details-view').html('');
-      // for (var key in result) {
-      //   $('.park-details-view').append('<div>' + key + ': ' + result[key] + '</div>');
-      // }
+      $('.park-details-view').html('');
+      for (var key in result) {
+        $('.park-details-view').append('<div>' + key + ': ' + result[key] + '</div>');
+      }
     });
   });
 
