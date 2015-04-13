@@ -5,7 +5,6 @@
     <title>Park Locatr</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/style.css">
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places,visualization"></script>
     
   </head>
@@ -14,8 +13,13 @@
       <h1>Park Locatr</h1>
       <p>Choose a place, find a park!</p>
       <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
-      <div id="map-canvas"></div>
+      <div id="map-canvas"></div><!--
+      --><div class="park-details-view"></div>
     </div>
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+    <script src="scripts/models/park.js"></script>
 
     <script src="scripts/app.js"></script>
   </body>
