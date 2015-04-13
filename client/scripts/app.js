@@ -91,8 +91,14 @@ function callback(results, status) {
     alert(status);
     return;
   }
+  var parks = new Parks();
   for (var i = 0, result; result = results[i]; i++) {
     createMarker(result);
+    console.log(result);
+    $('.park-details-view').append('<div>' + result.name + '</div>');
+    var park = new Park(result);
+    parks.add(park);
+    console.log(parks);
   }
 }
 
@@ -125,11 +131,10 @@ function createMarker(place) {
       
       infoWindow.setContent('<div class="info-window">' + result.name + '</div>');
       infoWindow.open(map, marker);
-      console.log(result);
-      $('.park-details-view').html('');
-      for (var key in result) {
-        $('.park-details-view').append('<div>' + key + ': ' + result[key] + '</div>');
-      }
+      // $('.park-details-view').html('');
+      // for (var key in result) {
+      //   $('.park-details-view').append('<div>' + key + ': ' + result[key] + '</div>');
+      // }
     });
   });
 
