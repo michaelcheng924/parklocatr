@@ -3,9 +3,9 @@ var ParkView = Backbone.View.extend({
   tagName: 'div',
 
   initialize: function() {
-    this.template = _.template('<strong><%- name %></strong> \
+    this.template = _.template('<h3><%- name %></h3> \
       <div>Location: <%- vicinity %></div> \
-      <div>Rating: <%- rating %>/5</div>');
+      <div>Rating: <%- rating %></div>');
   },
 
   events: {

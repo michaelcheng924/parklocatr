@@ -1,5 +1,10 @@
 /* ============= ParkDetailView ================ */
 
+.parks-view {
+  clear: both;
+  text-align: center;
+}
+
 .park-details-view {
   float: right;
   background: yellow;
