@@ -85,11 +85,9 @@ function callback(results, status) {
   var parks = new Parks();
   for (var i = 0, result; result = results[i]; i++) {
     createMarker(result);
-    // console.log(result);
-    // $('.park-details-view').append('<div>' + result.name + '</div>');
     var park = new Park(result);
     parks.add(park);
-    console.log(parks);
+    console.log(result);
   }
   var parksView = new ParksView({collection: parks});
 }
