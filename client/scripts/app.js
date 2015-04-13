@@ -65,15 +65,6 @@ function initialize() {
 
     google.maps.event.addListenerOnce(map, 'bounds_changed', performSearch);
   });
-
-  // Sets a listener on a radio button to change the filter type on Places
-  // Autocomplete.
-  function setupClickListener(id, types) {
-    var radioButton = document.getElementById(id);
-    google.maps.event.addDomListener(radioButton, 'click', function() {
-      autocomplete.setTypes(types);
-    });
-  }
 }
 
 
@@ -94,12 +85,13 @@ function callback(results, status) {
   var parks = new Parks();
   for (var i = 0, result; result = results[i]; i++) {
     createMarker(result);
-    console.log(result);
-    $('.park-details-view').append('<div>' + result.name + '</div>');
+    // console.log(result);
+    // $('.park-details-view').append('<div>' + result.name + '</div>');
     var park = new Park(result);
     parks.add(park);
     console.log(parks);
   }
+  var parksView = new ParksView({collection: parks});
 }
 
 function createMarker(place) {

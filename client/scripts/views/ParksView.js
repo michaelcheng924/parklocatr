@@ -1,6 +1,6 @@
 var ParksView = Backbone.View.extend({
 
-  el: $('.parks-view'),
+  el: $('.park-details-view'),
 
   initialize: function() {
     this.render();
