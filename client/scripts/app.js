@@ -87,7 +87,6 @@ function callback(results, status) {
     createMarker(result);
     var park = new Park(result);
     parks.add(park);
-    console.log(result);
   }
   var parksView = new ParksView({collection: parks});
 }
@@ -118,10 +117,15 @@ function createMarker(place) {
         alert(status);
         return;
       }
+
+      
       
       infoWindow.setContent('<div class="info-window">' + result.name + '</div>');
       infoWindow.open(map, marker);
       $('.park-details-view').html('');
+      $('.park-details-view').append('\
+        <h3>' + result.name + '</h3> \
+        ');
       for (var key in result) {
         $('.park-details-view').append('<div>' + key + ': ' + result[key] + '</div>');
       }

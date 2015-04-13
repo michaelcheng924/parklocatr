@@ -1,10 +1,13 @@
-var ParkView = Backbone.View.extend({
+var ParkDetailsView = Backbone.View.extend({
+
+  el: $('.park-details-view'),
 
   template: _.template('<h3><%- name %></h3> \
       <div>Location: <%- vicinity %></div> \
       <div>Rating: <%- rating %></div>'),
 
   initialize: function() {
+    this.render();
   },
 
   events: {

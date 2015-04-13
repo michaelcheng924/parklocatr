@@ -27,11 +27,18 @@
 
     <script src="scripts/models/park.js"></script>
     <script src="scripts/collections/Parks.js"></script>
+    <script src="scripts/models/ParkDetails.js"></script>
 
     <script src="scripts/views/ParkView.js"></script>
     <script src="scripts/views/ParksView.js"></script>
+    <script src="scripts/views/ParkDetailsView.js"></script>
 
     <script src="scripts/app.js"></script>
+
+    <script>
+    var parkDetails = new ParkDetails({name: 'park', vicinity: 'here', rating: 4.5});
+    var parkDetailsView = new ParkDetailsView({model: parkDetails});
+    </script>
 
   </body>
 </html>
