@@ -118,17 +118,18 @@ function createMarker(place) {
         return;
       }
 
-      
+      var parkDetails = new ParkDetails(result);
+      var parkDetailsView = new ParkDetailsView({model: parkDetails});
       
       infoWindow.setContent('<div class="info-window">' + result.name + '</div>');
       infoWindow.open(map, marker);
-      $('.park-details-view').html('');
-      $('.park-details-view').append('\
-        <h3>' + result.name + '</h3> \
-        ');
-      for (var key in result) {
-        $('.park-details-view').append('<div>' + key + ': ' + result[key] + '</div>');
-      }
+      // $('.park-details-view').html('');
+      // $('.park-details-view').append('\
+      //   <h3>' + result.name + '</h3> \
+      //   ');
+      // for (var key in result) {
+      //   $('.park-details-view').append('<div>' + key + ': ' + result[key] + '</div>');
+      // }
     });
   });
 
