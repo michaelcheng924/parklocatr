@@ -61,8 +61,6 @@ function initialize() {
     infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
     infowindow.open(map, marker);
 
-    console.log(place.geometry.location);
-
     google.maps.event.addListenerOnce(map, 'bounds_changed', performSearch);
   });
 }
@@ -123,18 +121,10 @@ function createMarker(place) {
       
       infoWindow.setContent('<div class="info-window">' + result.name + '</div>');
       infoWindow.open(map, marker);
-      // $('.park-details-view').html('');
-      // $('.park-details-view').append('\
-      //   <h3>' + result.name + '</h3> \
-      //   ');
-      // for (var key in result) {
-      //   $('.park-details-view').append('<div>' + key + ': ' + result[key] + '</div>');
-      // }
     });
   });
 
   function toggleBounce() {
-
     if (marker.getAnimation() != null) {
       marker.setAnimation(null);
     } else {
