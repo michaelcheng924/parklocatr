@@ -1,22 +1,33 @@
 /* ============= ParkDetailView ================ */
 
-.parks-view {
-  clear: both;
+.parks-view-container {
   text-align: center;
+  float: left;
+  width: 60%;
+  margin-top: 30px;
+  padding: 20px;
+  border: 1px solid black;
 }
 
-.park-details-view {
+.parks-view {
+  text-align: left;
+}
+
+.park-details-view-container {
+  text-align: center;
   float: right;
-  background: yellow;
   width: 40%;
-  height: 450px;
+  min-height: 450px;
+  padding: 10px;
+  padding-bottom: 22px;
+  border: 1px solid black;
 }
 
 /* ============= GOOGLE MAP ================= */
 
 #map-canvas { 
-  position: relative;
   float: left;
+  position: relative;
   width: 60%;
   height: 450px; 
 }
@@ -49,4 +60,14 @@
 
 .pac-container {
   font-family: Roboto;
+}
+
+/* =============== MEDIA QUERIES ================= */
+
+@media screen and (max-width: 320px) {
+
+}
+
+@media screen and (max-width: 480px) {
+
 }
