@@ -26,7 +26,7 @@
 
       <div class="parks-view-container">
         <div class="parks-view-heading">
-          <h3>Choose a location to find parks!</h3>
+          <h2>Choose a location to find parks!</h2>
         </div>
         <div class="parks-view"></div>
       </div>
@@ -62,7 +62,6 @@
       <h4>Overall Rating:</h4> 
       <%- rating %>/5 (<%- user_ratings_total %> ratings)
     </div>
-    <br>
     <h4>Reviews:</h4>
     <% _.each(reviews, function(review) { %>
       <div class="park-details-reviews">
@@ -70,7 +69,7 @@
         <div><strong>Author rating: </strong><%- review.rating %>/5</div>
         <div><strong>Review: </strong><%- review.text %></div>
       </div>
-      <br><br>
+      <br>
     <% }) %>
     <div>Photos: <% _.each(photos, function(photo) { console.log(photo);%><% }) %></div>
     </script>

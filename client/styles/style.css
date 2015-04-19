@@ -9,16 +9,40 @@
   border: 1px solid black;
 }
 
+.parks-view-heading {
+  margin-bottom: 27px;
+}
+
 .parks-view {
   text-align: left;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.parks-view-park {
+  background: #D8FFC3;
+  padding: 15px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.parks-view-park:hover {
+  color: #1C4013;
+  background: #fff;
+  border: 1px solid #1c4013;
+}
+
+.parks-view-park h3 {
+  margin-top: 0;
 }
 
 .park-details-view-container {
   text-align: center;
   float: right;
-  width: 40%;
+  width: 37%;
   min-height: 450px;
-  padding: 10px;
+  margin-left: 10px;
+  padding: 20px;
   padding-bottom: 22px;
   border: 1px solid black;
 }

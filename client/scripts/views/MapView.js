@@ -40,7 +40,7 @@ var MapView = Backbone.View.extend({
       marker.setVisible(false);
       var place = autocomplete.getPlace();
       console.log(place);
-      $('.parks-view-heading').html('<h3>Parks around ' + place.formatted_address + '</h3>');
+      $('.parks-view-heading').html('<h2>Parks around ' + place.formatted_address + '</h2>');
       if (!place.geometry) {
         return;
       }
