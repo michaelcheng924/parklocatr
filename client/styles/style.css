@@ -23,6 +23,10 @@
   border: 1px solid black;
 }
 
+.park-details-reviews {
+  text-align: left;
+}
+
 /* ============= GOOGLE MAP ================= */
 
 #map-canvas { 
