@@ -39,6 +39,7 @@ var ParkView = Backbone.View.extend({
           position: result.geometry.location,
         });
 
+        window.scrollTo(0,0);
 
         setTimeout(function() {
           marker.setAnimation(null);
@@ -48,43 +49,6 @@ var ParkView = Backbone.View.extend({
         infoWindow.setContent('<div class="info-window">' + result.name + '</div>');
         infoWindow.open(map, marker);
       });
-
-      function createMarker(place) {
-
-        if (place.photos) {
-          var photos = place.photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35});
-        } else {
-          var photos = 'images/park-icon.png';
-        }
-
-        var marker = new google.maps.Marker({
-          map: map,
-          animation: google.maps.Animation.DROP,
-          icon: photos,
-          position: place.geometry.location,
-        });
-
-        google.maps.event.addListener(marker, 'click', function() {
-          toggleBounce();
-          setTimeout(function() {
-            marker.setAnimation(null);
-          }, 1400);
-
-          // infoWindow.close();
-            
-          infoWindow.setContent('<div class="info-window">' + result.name + '</div>');
-          infoWindow.open(map, marker);
-        
-        });
-      }
-
-      function toggleBounce() {
-        if (marker.getAnimation() != null) {
-          marker.setAnimation(null);
-        } else {
-          marker.setAnimation(google.maps.Animation.BOUNCE);
-        }
-      }
     }
   },
 
