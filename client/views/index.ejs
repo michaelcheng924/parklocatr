@@ -1,0 +1,54 @@
+<header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="#" class="navbar-brand">
+          Park Locatr
+        </a>
+      </div>
+
+      <!-- Collect the nav links for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active">
+            <a href="/dashboard">Dashboard</a>
+          </li>
+          <li>
+            <a href="/login">Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="container">
+  <h1>Park Locatr</h1>
+  <ol>
+    <li>Choose a location</li>
+    <li>Get a list of 20 parks, sorted by relevance</li>
+    <li>Click on a park to see details</li>
+  </ol>
+  <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+  <div id="map-canvas"></div><!--
+  --><div class="park-details-view-container">
+    <h3>Park details:</h3>
+    <div class="park-details-view"></div>
+    </div> 
+  <hr>
+
+  <div class="parks-view-container">
+    <div class="parks-view-heading">
+      <h2>Enter a location to find parks!</h2>
+    </div>
+    <div class="parks-view"></div>
+  </div>
+  </div>
+</div>
