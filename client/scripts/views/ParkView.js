@@ -34,10 +34,16 @@ var ParkView = Backbone.View.extend({
 
         var marker = new google.maps.Marker({
           map: map,
-          animation: google.maps.Animation.DROP,
+          animation: google.maps.Animation.BOUNCE,
           icon: photos,
           position: result.geometry.location,
         });
+
+
+        setTimeout(function() {
+          marker.setAnimation(null);
+        }, 1400);
+
         
         infoWindow.setContent('<div class="info-window">' + result.name + '</div>');
         infoWindow.open(map, marker);
@@ -70,6 +76,14 @@ var ParkView = Backbone.View.extend({
           infoWindow.open(map, marker);
         
         });
+      }
+
+      function toggleBounce() {
+        if (marker.getAnimation() != null) {
+          marker.setAnimation(null);
+        } else {
+          marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
       }
     }
   },
