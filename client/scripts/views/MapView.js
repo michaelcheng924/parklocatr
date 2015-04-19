@@ -7,6 +7,10 @@ var MapView = Backbone.View.extend({
   },
 
   render: function() {
+    // var map;
+    // var infoWindow;
+    var service;
+
     var mapOptions = {
       center: new google.maps.LatLng(37.6, -95.665),
       zoom: 4
@@ -25,7 +29,7 @@ var MapView = Backbone.View.extend({
     var autocomplete = new google.maps.places.Autocomplete(input);
     autocomplete.bindTo('bounds', map);
 
-    var infowindow = new google.maps.InfoWindow();
+    /*var*/ infowindow = new google.maps.InfoWindow();
     var marker = new google.maps.Marker({
       map: map,
       anchorPoint: new google.maps.Point(0, -29)
