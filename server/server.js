@@ -5,8 +5,6 @@ var LocalStrategy = require('passport-local');
 var app = express();
 
 app.use(express.static(__dirname + '/../client'));
-app.set('views', __dirname + '/../client/views');
-app.set('view engine', 'ejs');
 
 // require('./routes')(app);
 
