@@ -20,4 +20,6 @@
   </div>
   <br>
 <% }) %>
-<div>Photos: <% _.each(photos, function(photo) { console.log(photo);%><% }) %></div>
+<div>Photos: <% _.each(photos, function(photo) { %> 
+  <img src="<%- photo.getUrl({'maxWidth': 50, 'maxHeight': 50}) %>"> 
+<% }) %></div>

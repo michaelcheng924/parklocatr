@@ -6,6 +6,7 @@ var Router = Backbone.Router.extend({
   },
 
   index: function() {
+    console.log('index!');
   },
 
   login: function() {
