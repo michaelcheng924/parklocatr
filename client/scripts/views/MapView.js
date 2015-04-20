@@ -39,7 +39,6 @@ var MapView = Backbone.View.extend({
       infowindow.close();
       marker.setVisible(false);
       var place = autocomplete.getPlace();
-      console.log(place);
       $('.parks-view-heading').html('<h2>Parks around ' + place.formatted_address + '</h2>');
       if (!place.geometry) {
         return;

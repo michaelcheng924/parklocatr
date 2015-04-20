@@ -51,6 +51,11 @@
   text-align: left;
 }
 
+.modal-dialog {
+  width: 90%;
+  height: 90%;
+}
+
 /* ============= GOOGLE MAP ================= */
 
 #map-canvas { 
