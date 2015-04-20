@@ -1,19 +1,21 @@
 var NavbarView = Backbone.View.extend({
 
-  el: $('header'),
-
+  el: $('.park-details-view'),
+  
   initialize: function() {
-    this.template = _.template($('.navbar-view').html());
-
     this.render();
   },
 
   render: function() {
-    this.$el.html('');
-    this.$el.append(
-      this.collection.map(function(park) {
-        return new ParkView({model: park}).render();
-      })
-    );
+    $.ajax({
+      url: 'scripts/templates/ParkDetailsViewTemplate.js',
+      dataType: 'html',
+      success: function(data) {
+        console.log('get request!')
+        console.log(data);
+        var template = _.template(data, {});
+        this.$el.html(template(this.model.attributes));
+      }.bind(this)
+    });
   }
 });

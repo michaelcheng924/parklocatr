@@ -80,12 +80,17 @@
 
     <script src="scripts/routers/Router.js"></script>
 
+    <script src="scripts/models/App.js"></script>
+    <script src="scripts/views/AppView.js"></script>
+
     <!-- <script src="scripts/app.js"></script> -->
     <script src="scripts/views/MapView.js"></script>
 
     <script>
       $(function() {
-        var mapView = new MapView();
+        var app = new App();
+        var appView = new AppView({model: app});
+
         var router = new Router();
         Backbone.history.start();
       });
