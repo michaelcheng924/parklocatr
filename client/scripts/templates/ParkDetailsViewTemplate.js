@@ -1,26 +1,25 @@
 <h2><%- name %></h2>
 
-<!-- Button trigger modal -->
-<a data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</a>
+<div><% _.each(photos, function(photo, index) { %> 
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-body">
-        <img src="http://upload.wikimedia.org/wikipedia/commons/8/86/Jefferson_Park_in_Chicago.JPG" style="max-width: 80%">
-      </div>
-      <div class="modal-footer">
-        <center><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></center>
+  <!-- Button trigger modal -->
+  <a data-toggle="modal" data-target="#myModal<%- index %>">
+    <img src="<%- photo.getUrl({'maxWidth': 50, 'maxHeight': 50}) %>" class="park-photo"> 
+  </a>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal<%- index %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <img src="<%- photo.getUrl({'maxWidth': 1000, 'maxHeight': 1000}) %>" style="max-width: 90%">
+        </div>
+        <div class="modal-footer">
+          <center><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></center>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<div><% _.each(photos, function(photo) { %> 
-  <img src="<%- photo.getUrl({'maxWidth': 50, 'maxHeight': 50}) %>" class="park-photo"> 
 <% }) %></div>
 
 <div class="park-details-info">
