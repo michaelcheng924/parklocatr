@@ -1,19 +1,14 @@
 var Router = Backbone.Router.extend({
   routes: {
     '': 'index',
-    'parks/:id': 'showParkDetails',
+    'login': 'login',
     'test': 'test'
   },
 
   index: function() {
-
   },
 
-  showParkDetails: function() {
+  login: function() {
 
-  },
-
-  test: function() {
-    console.log('test!!'); 
   }
 });

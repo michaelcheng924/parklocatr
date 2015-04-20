@@ -3,8 +3,6 @@ var ParkDetailsView = Backbone.View.extend({
   el: $('.park-details-view'),
   
   initialize: function() {
-    this.template = _.template($('.park-details-view-template').html()),
-
     this.render();
   },
 
@@ -15,6 +13,15 @@ var ParkDetailsView = Backbone.View.extend({
   },
 
   render: function() {
-    return this.$el.html(this.template(this.model.attributes));
+    $.ajax({
+      url: 'scripts/templates/ParkDetailsViewTemplate.js',
+      dataType: 'html',
+      success: function(data) {
+        console.log('get request!')
+        console.log(data);
+        var template = _.template(data, {});
+        this.$el.html(template(this.model.attributes));
+      }.bind(this)
+    });
   }
 });

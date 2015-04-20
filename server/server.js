@@ -6,7 +6,7 @@ var app = express();
 
 app.use(express.static(__dirname + '/../client'));
 
-// require('./routes')(app);
+require('./routes')(app);
 
 // Configure passport
 
