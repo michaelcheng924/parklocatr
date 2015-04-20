@@ -1,6 +1,6 @@
 var NavbarView = Backbone.View.extend({
 
-  el: $('.park-details-view'),
+  el: $('.navbar-view'),
   
   initialize: function() {
     this.render();
@@ -8,13 +8,11 @@ var NavbarView = Backbone.View.extend({
 
   render: function() {
     $.ajax({
-      url: 'scripts/templates/ParkDetailsViewTemplate.js',
+      url: 'scripts/templates/NavbarViewTemplate.js',
       dataType: 'html',
       success: function(data) {
-        console.log('get request!')
-        console.log(data);
         var template = _.template(data, {});
-        this.$el.html(template(this.model.attributes));
+        this.$el.html(template());
       }.bind(this)
     });
   }

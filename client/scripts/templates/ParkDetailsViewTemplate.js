@@ -4,7 +4,7 @@
 
   <!-- Button trigger modal -->
   <a data-toggle="modal" data-target="#myModal<%- index %>">
-    <img src="<%- photo.getUrl({'maxWidth': 50, 'maxHeight': 50}) %>" class="park-photo"> 
+    <img src="<%- photo.getUrl({'maxWidth': 70, 'maxHeight': 70}) %>" class="park-photo"> 
   </a>
 
   <!-- Modal -->

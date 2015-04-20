@@ -10,36 +10,7 @@
   </head>
   <body>
 
-    <header>
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a href="#" class="navbar-brand">
-              Park Locatr
-            </a>
-          </div>
-
-          <!-- Collect the nav links for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-              <li class="active">
-                <a href="/dashboard">Dashboard</a>
-              </li>
-              <li>
-                <a href="/login">Login/Signup</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+  <div class="navbar-view"></div>
 
     <div class="container">
       <h1>Park Locatr</h1>
@@ -70,21 +41,20 @@
     <script src="bower_components/backbone/backbone.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
+    <script src="scripts/models/App.js"></script>
     <script src="scripts/models/park.js"></script>
     <script src="scripts/collections/Parks.js"></script>
     <script src="scripts/models/ParkDetails.js"></script>
 
+    <script src="scripts/views/AppView.js"></script>
+    <script src="scripts/views/MapView.js"></script>
     <script src="scripts/views/ParkView.js"></script>
     <script src="scripts/views/ParksView.js"></script>
     <script src="scripts/views/ParkDetailsView.js"></script>
+    <script src="scripts/views/NavbarView.js"></script>
 
     <script src="scripts/routers/Router.js"></script>
 
-    <script src="scripts/models/App.js"></script>
-    <script src="scripts/views/AppView.js"></script>
-
-    <!-- <script src="scripts/app.js"></script> -->
-    <script src="scripts/views/MapView.js"></script>
 
     <script>
       $(function() {

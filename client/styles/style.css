@@ -51,6 +51,10 @@
   text-align: left;
 }
 
+.park-photo {
+  cursor: pointer;
+}
+
 .modal-dialog {
   width: 90%;
   height: 90%;
