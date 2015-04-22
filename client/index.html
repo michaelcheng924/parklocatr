@@ -12,27 +12,28 @@
 
   <div class="navbar-view"></div>
 
-    <div class="container">
-      <h1>Park Locatr</h1>
-      <ol>
-        <li>Choose a location</li>
-        <li>Get a list of 20 parks, sorted by relevance</li>
-        <li>Click on a park to see details</li>
-      </ol>
-      <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
-      <div id="map-canvas"></div><!--
-      --><div class="park-details-view-container">
-        <h3>Park details:</h3>
-        <div class="park-details-view"></div>
-        </div> 
-      <hr>
+    <div class="main-page">
+      <div class="container">
+        <h1>Park Locatr</h1>
+        <ol>
+          <li>Choose a location</li>
+          <li>Get a list of 20 parks, sorted by relevance</li>
+          <li>Click on a park to see details</li>
+        </ol>
+        <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+        <div id="map-canvas"></div><!--
+        --><div class="park-details-view-container">
+          <h3>Park details:</h3>
+          <div class="park-details-view"></div>
+          </div> 
+        <hr>
 
-      <div class="parks-view-container">
-        <div class="parks-view-heading">
-          <h2>Enter a location to find parks!</h2>
+        <div class="parks-view-container">
+          <div class="parks-view-heading">
+            <h2>Enter a location to find parks!</h2>
+          </div>
+          <div class="parks-view"></div>
         </div>
-        <div class="parks-view"></div>
-      </div>
       </div>
     </div>
 
@@ -62,7 +63,7 @@
         var appView = new AppView({model: app});
 
         var router = new Router();
-        Backbone.history.start();
+        Backbone.history.start({pushState: true});
       });
     </script>
 
