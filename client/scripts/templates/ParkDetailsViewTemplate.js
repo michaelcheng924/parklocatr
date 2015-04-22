@@ -1,5 +1,5 @@
 <h2><%- name %></h2>
-
+<div class="photos-instructions">Click photos to enlarge!</div>
 <div><% _.each(photos, function(photo, index) { %> 
 
   <!-- Button trigger modal -->

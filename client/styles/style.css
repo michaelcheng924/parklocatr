@@ -2,6 +2,10 @@ body {
   font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.right-column {
+  background: #EDFFE8;
+}
+
 /* ============== LOGO SECTION ================ */
 
 .logo {
@@ -33,7 +37,7 @@ body {
 
 .instructions {
   text-align: center;
-  font-size: 28px;
+  font-size: 15px;
   margin-top: 30px;
   margin-bottom: 30px;
 }
@@ -42,8 +46,7 @@ body {
 
 .parks-view-container {
   text-align: center;
-  float: left;
-  width: 100%;
+  width: 97%;
   margin-top: 30px;
   margin-left: 18px;
   padding: 20px;
@@ -79,16 +82,23 @@ body {
 
 .park-details-view-container {
   text-align: center;
-  width: 95%;
+  background: #FFF;
+  width: 90%;
   min-height: 450px;
-  margin-right: 25px;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
   padding: 20px;
   padding-bottom: 22px;
-  border: 1px solid black;
+  border-radius: 10px;
 }
 
 .park-details-reviews {
   text-align: left;
+}
+
+.photos-instructions {
+  font-size: 12px;
 }
 
 .park-photo {
@@ -103,8 +113,7 @@ body {
 /* ============= GOOGLE MAP ================= */
 
 #map-canvas { 
-  float: left;
-  width: 100%;
+  width: 97%;
   height: 380px; 
   margin-left: 18px;
   border-radius: 8px;
