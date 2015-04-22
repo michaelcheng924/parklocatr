@@ -2,6 +2,8 @@ var express = require('express');
 var passport = require('passport');
 var LocalStrategy = require('passport-local');
 
+var db = require('./config/db');
+
 var app = express();
 
 app.use(express.static(__dirname + '/../client'));
