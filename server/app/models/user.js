@@ -1,4 +1,4 @@
-var db = require('../config/db');
+var db = require('../../config/db');
 var bcrypt = require('bcrypt-nodejs');
 
 var User = db.Model.extend({

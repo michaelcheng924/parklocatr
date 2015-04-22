@@ -3,6 +3,8 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local');
 
 var db = require('./config/db');
+var User = require('./app/models/user');
+var Users = require('./app/collections/users');
 
 var app = express();
 
