@@ -2,8 +2,14 @@ body {
   font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.left-column {
+  background: #F7FFEE;
+  height: 100vh;
+}
+
 .right-column {
-  background: #EDFFE8;
+  background: #A4D69A;
+  height: 100vh;
 }
 
 /* ============== LOGO SECTION ================ */
@@ -44,13 +50,20 @@ body {
 
 /* ============= ParkDetailView ================ */
 
+h2 {
+  margin-top: 0;
+  font-weight: 300;
+}
+
 .parks-view-container {
+  background: #FFF;
   text-align: center;
   width: 97%;
   margin-top: 30px;
+  margin-bottom: 30px;
   margin-left: 18px;
   padding: 20px;
-  border: 1px solid black;
+  border-radius: 4px;
 }
 
 .parks-view-heading {
@@ -90,7 +103,7 @@ body {
   margin-bottom: 30px;
   padding: 20px;
   padding-bottom: 22px;
-  border-radius: 10px;
+  border-radius: 4px;
 }
 
 .park-details-reviews {
