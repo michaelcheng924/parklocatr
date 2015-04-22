@@ -1,3 +1,36 @@
+body {
+  font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* ============== LOGO SECTION ================ */
+
+.logo {
+  background: #019875;
+  color: #FFF;
+  text-align: center;
+  padding-top: 55px;
+  padding-bottom: 18px;
+}
+
+.logo-icon {
+  display: inline-block;
+  margin-bottom: 75px;
+  margin-right: 22px;
+}
+
+.logo h1 {
+  display: inline-block;
+  font-size: 110px;
+  font-weight: 100;
+}
+
+.logo-tagline {
+  color: #F4D03F;
+  font-size: 40px;
+  font-weight: 100;
+  margin-top: -50px;
+}
+
 /* ============= ParkDetailView ================ */
 
 .parks-view-container {
