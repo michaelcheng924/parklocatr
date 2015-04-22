@@ -21,28 +21,47 @@
         <img src="../images/tree-logo-icon.png" class="logo-icon"><h1>Park Locatr</h1>
         <h2 class="logo-tagline">Discover. Share. Remember.</h2>
       </div>  
-      <div class="container">
-        <ol>
-          <li>Choose a location</li>
-          <li>Get a list of 20 parks, sorted by relevance</li>
-          <li>Click on a park to see details</li>
-        </ol>
-        <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
-        <div id="map-canvas"></div><!--
-        --><div class="park-details-view-container">
+        <div class="instructions">
+          Step 1: Enter a location
+        </div>
+
+        <div class="row">
+          <div class="col-md-7">
+            
+            <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+            <div id="map-canvas"></div>
+
+            <div class="parks-view-container">
+              <div class="parks-view-heading">
+                <h2>Enter a location to find parks!</h2>
+              </div>
+              <div class="parks-view"></div>
+            </div>
+
+          </div>
+
+          <div class="col-md-5">
+            <div class="park-details-view-container">
+              <h3>Park details:</h3>
+              <div class="park-details-view"></div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+        <div id="map-canvas"></div>
+        <div class="park-details-view-container">
           <h3>Park details:</h3>
           <div class="park-details-view"></div>
-          </div> 
-        <hr>
+          </div>  -->
 
-        <div class="parks-view-container">
+        <!-- <div class="parks-view-container">
           <div class="parks-view-heading">
             <h2>Enter a location to find parks!</h2>
           </div>
           <div class="parks-view"></div>
-        </div>
+        </div> -->
       </div>
-    </div>
 
     <div class="login-view"></div>
     <div class="signup-view"></div>

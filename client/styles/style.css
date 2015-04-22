@@ -31,13 +31,21 @@ body {
   margin-top: -50px;
 }
 
+.instructions {
+  text-align: center;
+  font-size: 28px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
 /* ============= ParkDetailView ================ */
 
 .parks-view-container {
   text-align: center;
   float: left;
-  width: 60%;
+  width: 100%;
   margin-top: 30px;
+  margin-left: 18px;
   padding: 20px;
   border: 1px solid black;
 }
@@ -71,10 +79,9 @@ body {
 
 .park-details-view-container {
   text-align: center;
-  float: right;
-  width: 37%;
+  width: 95%;
   min-height: 450px;
-  margin-left: 10px;
+  margin-right: 25px;
   padding: 20px;
   padding-bottom: 22px;
   border: 1px solid black;
@@ -97,9 +104,11 @@ body {
 
 #map-canvas { 
   float: left;
-  position: relative;
-  width: 60%;
-  height: 450px; 
+  width: 100%;
+  height: 380px; 
+  margin-left: 18px;
+  border-radius: 8px;
+  border: 2px solid #90C695;
 }
 
 .controls {
@@ -121,7 +130,7 @@ body {
   margin-left: 12px;
   padding: 0 11px 0 13px;
   text-overflow: ellipsis;
-  width: 90%;
+  width: 86%;
 }
 
 #pac-input:focus {
