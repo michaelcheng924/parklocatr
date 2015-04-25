@@ -1,6 +1,6 @@
 <div class="container form-container">
   <h2>Sign up</h2>
-  <form action="/signup" method="post">
+  <form class="signup-form" method="post">
       <div class="form-group">
         <label for="username">Username:</label>
         <input id="username" type="text" name="username" class="form-control">
@@ -17,6 +17,6 @@
   <br>
 
   <p>
-    <a href="/login">Login to your account &rarr;</a>
+    <a href="/#login">Login to your account &rarr;</a>
   <p>
 </div>

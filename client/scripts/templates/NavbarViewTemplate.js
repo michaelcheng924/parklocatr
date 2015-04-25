@@ -24,10 +24,10 @@
             <a href="/dashboard">Dashboard</a>
           </li>
           <li class="login">
-            <a href="#">Login</a>
+            <a href="/#login">Login</a>
           </li>
           <li class="signup">
-            <a href="#">Signup</a>
+            <a href="/#signup">Signup</a>
           </li>
         </ul>
       </div>

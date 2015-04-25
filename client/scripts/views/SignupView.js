@@ -6,6 +6,10 @@ var SignupView = Backbone.View.extend({
     this.render();
   },
 
+  events: {
+    'submit .signup-form': 'handleSubmit'
+  },
+
   render: function() {
     $.ajax({
       url: 'scripts/templates/SignupViewTemplate.js',
@@ -15,5 +19,11 @@ var SignupView = Backbone.View.extend({
         this.$el.html(template());
       }.bind(this)
     });
+  },
+
+  handleSubmit: function(e) {
+    e.preventDefault();
+
+    console.log('submitted!');
   }
 });

@@ -1,3 +1,10 @@
+var express = require('express');
+var bodyParser = require('body-parser');
+
+var app = express();
+
+app.use(bodyParser());
+
 module.exports = function(app) {
 
   app.get('/login', function(req, res) {
@@ -8,8 +15,8 @@ module.exports = function(app) {
     res.redirect('/#signup');
   });
 
-  app.get('/api/test', function(req, res) {
-    console.log('testtt')
+  app.post('/signup', function(req, res) {
+    console.log(req.body);
   });
 
   app.use('/auth/local', require('./auth/local'));

@@ -17,7 +17,7 @@
   <br>
 
   <p>
-    <a href="/signup">Create an Account &rarr;</a>
+    <a href="/#signup">Create an Account &rarr;</a>
   <p>
 
 </div>

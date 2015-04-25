@@ -18,6 +18,7 @@
   "homepage": "https://github.com/michaelcheng429/parklocatr",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.12.3",
     "bookshelf": "^0.7.9",
     "ejs": "^2.3.1",
     "express": "^4.12.3",
