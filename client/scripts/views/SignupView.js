@@ -24,6 +24,15 @@ var SignupView = Backbone.View.extend({
   handleSubmit: function(e) {
     e.preventDefault();
 
-    console.log('submitted!');
+    $.ajax({
+      type: 'POST',
+      url: '/signup',
+      data: {
+        username: $('.username-signup').val(),
+        password: $('.password-signup').val()
+      }
+    }).success(function(res) {
+      console.log('successfully posted!');
+    });
   }
 });

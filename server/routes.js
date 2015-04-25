@@ -1,11 +1,7 @@
-var express = require('express');
 var bodyParser = require('body-parser');
 
-var app = express();
-
-app.use(bodyParser());
-
 module.exports = function(app) {
+  app.use(bodyParser());
 
   app.get('/login', function(req, res) {
     res.redirect('/#login');
