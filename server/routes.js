@@ -17,6 +17,25 @@ module.exports = function(app) {
     res.redirect('/#login');
   });
 
+  app.post('/login', function(req, res) {
+    new User({ username: req.body.username })
+      .fetch()
+      .then(function(user) {
+        if (user) {
+          bcrypt.compare(req.body.password, user.attributes.password, function(err, match) {
+            if (match) {
+              req.session.isAuthenticated = true;
+              res.redirect('/dashboard');
+            } else {
+              res.send('Incorrect password!');
+            }
+          });
+        } else {
+          res.send('Sorry, that username was not found in our database!');
+        }
+      });
+  });
+
   app.get('/signup', function(req, res) {
     res.redirect('/#signup');
   });
