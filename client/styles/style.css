@@ -1,6 +1,6 @@
 body {
   font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background: #A4d69A;
+  background: #F7FFEE;
 }
 
 .columns-container {
@@ -167,6 +167,23 @@ h2 {
 
 .pac-container {
   font-family: Roboto;
+}
+
+/* =============== LOGIN VIEW ================= */
+
+.form-container {
+  text-align: center;
+  background: #FFF;
+  width: 60%;
+  margin-top: 80px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 20px;
+}
+
+.form-container input {
+  width: 42%;
+  margin: 0 auto;
 }
 
 /* =============== MEDIA QUERIES ================= */

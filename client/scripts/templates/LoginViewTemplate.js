@@ -1,5 +1,6 @@
-<h2>Login</h2>
-<form action="/login" method="post">
+<div class="container form-container">
+  <h2>Login</h2>
+  <form action="/login" method="post">
     <div class="form-group">
       <label for="username">Username:</label>
       <input id="username" type="text" name="username" class="form-control">
@@ -9,10 +10,14 @@
       <input id="password" type="password" name="password" class="form-control">
     </div>
     <div>
-      <input type="submit" value="Login" class="btn btn-primary">
+      <button class="btn btn-primary">Login</button>
     </div>
-</form>
+  </form>
 
-<p>
-  <a href="/signup">Create an Account &rarr;</a>
-<p>
+  <br>
+
+  <p>
+    <a href="/signup">Create an Account &rarr;</a>
+  <p>
+
+</div>
