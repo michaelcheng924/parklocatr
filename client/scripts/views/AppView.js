@@ -5,6 +5,7 @@ var AppView = Backbone.View.extend({
     this.navbarView = new NavbarView();
     this.loginView = new LoginView();
     this.signupView = new SignupView();
+    this.dashboardView = new DashboardView();
 
     this.loginView.$el.hide();
     this.signupView.$el.hide();

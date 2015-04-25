@@ -2,7 +2,8 @@ var Router = Backbone.Router.extend({
   routes: {
     '': 'index',
     'login': 'login',
-    'signup': 'signup'
+    'signup': 'signup',
+    'dashboard': 'dashboard'
   },
 
   index: function() {
@@ -30,5 +31,9 @@ var Router = Backbone.Router.extend({
 
     $('nav li').removeClass('active');
     $('.signup').addClass('active');
+  },
+
+  dashboard: function() {
+    $('.dashboard-view').show();
   }
 });
