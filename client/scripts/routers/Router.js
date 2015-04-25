@@ -16,18 +16,20 @@ var Router = Backbone.Router.extend({
   },
 
   login: function() {
+    $('.login-view').show();
     $('.main-page').hide();
     $('.signup-view').hide();
-    $('.login-view').show();
+    $('.dashboard-view').hide();
 
     $('nav li').removeClass('active');
     $('.login').addClass('active');
   },
 
   signup: function() {
+    $('.signup-view').show();
     $('.main-page').hide();
     $('.login-view').hide();
-    $('.signup-view').show();
+    $('.dashboard-view').hide();
 
     $('nav li').removeClass('active');
     $('.signup').addClass('active');
@@ -35,5 +37,11 @@ var Router = Backbone.Router.extend({
 
   dashboard: function() {
     $('.dashboard-view').show();
+    $('.main-page').hide();
+    $('.login-view').hide();
+    $('.signup-view').hide();
+
+    $('nav li').removeClass('active');
+    $('.dashboard').addClass('active');
   }
 });

@@ -186,6 +186,10 @@ h2 {
   margin: 0 auto;
 }
 
+.dashboard-container {
+  margin-top: 80px;
+}
+
 /* =============== MEDIA QUERIES ================= */
 
 @media screen and (max-width: 320px) {
