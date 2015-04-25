@@ -1,5 +1,6 @@
 body {
   font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #A4d69A;
 }
 
 .columns-container {
@@ -14,10 +15,6 @@ body {
 
 .right-column {
   background: #A4D69A;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
   padding-top: 30px;
   padding-bottom: 30px;
 }
