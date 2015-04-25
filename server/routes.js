@@ -63,7 +63,15 @@ module.exports = function(app) {
           });
           
         }
-      })
+      });
+
+      app.get('/dashboard', function(req, res) {
+        if (!req.session.isAuthenticated) {
+          res.redirect('/login');
+        } else {
+          res.redirect('/#dashboard');
+        }
+      });
 
   });
 
