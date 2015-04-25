@@ -2,14 +2,24 @@ body {
   font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.columns-container {
+  position: relative;
+}
+
 .left-column {
   background: #F7FFEE;
-  height: 100vh;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .right-column {
   background: #A4D69A;
-  height: 100vh;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 /* ============== LOGO SECTION ================ */
@@ -44,7 +54,6 @@ body {
 .instructions {
   text-align: center;
   font-size: 15px;
-  margin-top: 30px;
   margin-bottom: 30px;
 }
 
@@ -77,7 +86,8 @@ h2 {
 }
 
 .parks-view-park {
-  background: #D8FFC3;
+  color: #FFF;
+  background: #1C4013;
   padding: 15px;
   margin-bottom: 15px;
   cursor: pointer;
@@ -99,7 +109,6 @@ h2 {
   width: 90%;
   min-height: 450px;
   margin: 0 auto;
-  margin-top: 30px;
   margin-bottom: 30px;
   padding: 20px;
   padding-bottom: 22px;
