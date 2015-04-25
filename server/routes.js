@@ -1,7 +1,17 @@
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var bcrypt = require('bcrypt-nodejs');
+var User = require('./app/models/user');
+var Users = require('./app/collections/users');
 
 module.exports = function(app) {
+  
   app.use(bodyParser());
+  app.use(session({
+    secret: 'shhhsupersecretsecret',
+    resave: false,
+    saveUninitialized: true
+  }));
 
   app.get('/login', function(req, res) {
     res.redirect('/#login');
@@ -12,7 +22,30 @@ module.exports = function(app) {
   });
 
   app.post('/signup', function(req, res) {
-    console.log(req.body);
+    new User({ username: req.body.username })
+      .fetch()
+      .then(function(found) {
+        if (found) {
+          res.send('Username already exists!');
+        } else {
+          bcrypt.hash(req.body.password, null, null, function(err, hash) {
+            console.log(hash);
+            var user = new User({
+              username: req.body.username,
+              password: hash
+            });
+
+            user.save().then(function(newUser) {
+              console.log(newUser);
+              Users.add(newUser);
+              req.session.isAuthenticated = true;
+              res.redirect('/dashboard');
+            });
+          });
+          
+        }
+      })
+
   });
 
   app.use('/auth/local', require('./auth/local'));
