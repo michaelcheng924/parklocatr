@@ -29,23 +29,17 @@ body {
   padding-bottom: 18px;
 }
 
-.logo-icon {
-  display: inline-block;
-  margin-bottom: 75px;
-  margin-right: 22px;
-}
-
 .logo h1 {
   display: inline-block;
-  font-size: 110px;
+  font-size: 70px;
   font-weight: 100;
 }
 
 .logo-tagline {
   color: #F4D03F;
-  font-size: 40px;
+  font-size: 25px;
   font-weight: 100;
-  margin-top: -50px;
+  /*margin-top: -35px;*/
 }
 
 .instructions {
@@ -192,10 +186,8 @@ h2 {
 
 /* =============== MEDIA QUERIES ================= */
 
-@media screen and (max-width: 320px) {
-
-}
-
-@media screen and (max-width: 480px) {
-
-}
+/*@media (max-width: 540px) {
+  .logo-icon {
+    margin-top: 15px;
+  }
+}*/
