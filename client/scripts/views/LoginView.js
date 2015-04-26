@@ -25,8 +25,10 @@ var LoginView = Backbone.View.extend({
         }
       }).success(function(res) {
         if (res === 'OK') {
+          self.model.set('menu', 'Logout');
+          self.model.set('url', '/logout');
           self.router.navigate('/dashboard', {trigger: true});
-          console.log('Successfully logged in!', res);
+          console.log('Successfully logged in!');
         }
       });
 

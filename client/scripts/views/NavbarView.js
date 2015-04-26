@@ -6,6 +6,8 @@ var NavbarView = Backbone.View.extend({
     this.router = new Router();
 
     this.render();
+
+    this.model.on('change', this.render, this);
   },
 
   events: {
@@ -25,7 +27,6 @@ var NavbarView = Backbone.View.extend({
       url: 'scripts/templates/NavbarViewTemplate.js',
       dataType: 'html',
       success: function(data) {
-        console.log(this.model.attributes);
         var template = _.template(data);
         this.$el.html(template(this.model.attributes));
       }.bind(this)
