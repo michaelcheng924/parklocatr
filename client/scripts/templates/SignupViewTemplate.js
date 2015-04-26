@@ -1,4 +1,4 @@
-<div class="container form-container">
+<div class="container view-container">
   <h2>Sign up</h2>
   <form>
       <div class="form-group">
@@ -16,7 +16,5 @@
 
   <br>
 
-  <p>
     <a href="/#login">Login to your account &rarr;</a>
-  <p>
 </div>

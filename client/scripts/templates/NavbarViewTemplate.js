@@ -21,7 +21,7 @@
             <a href="#">Home</a>
           </li>
           <li class="dashboard">
-            <a href="/dashboard">Dashboard</a>
+            <a href="/#dashboard">Dashboard</a>
           </li>
           <li class="login">
             <a href="<%- url %>"><%- menu %></a>

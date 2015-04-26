@@ -164,9 +164,9 @@ h2 {
 
 /* =============== LOGIN VIEW ================= */
 
-.form-container {
+.view-container {
   text-align: center;
-  background: #FFF;
+  background: url('../../images/cream_dust.png');
   width: 60%;
   margin-top: 80px;
   padding-top: 20px;
@@ -174,13 +174,13 @@ h2 {
   border-radius: 20px;
 }
 
-.form-container input {
+.view-container input {
   width: 42%;
   margin: 0 auto;
 }
 
 .dashboard-container {
-  margin-top: 80px;
+  text-align: left;
 }
 
 /* =============== MEDIA QUERIES ================= */

@@ -10,6 +10,7 @@ var Router = Backbone.Router.extend({
     $('.main-page').show();
     $('.login-view').hide();
     $('.signup-view').hide();
+    $('.dashboard-view').hide();
 
     $('nav li').removeClass('active');
     $('.home').addClass('active');
