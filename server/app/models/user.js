@@ -1,8 +1,11 @@
 var db = require('../../config/db');
-var bcrypt = require('bcrypt-nodejs');
+var Park = require('./park');
 
 var User = db.Model.extend({
   tableName: 'users',
+  user: function() {
+    return this.hasMany(Park);
+  },
 
   initialize: function() {
   }
