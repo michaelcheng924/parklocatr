@@ -25,7 +25,6 @@ var LoginView = Backbone.View.extend({
         }
       }).success(function(res) {
         if (res === 'OK') {
-          localStorage.setItem('com.parklocatr', true);
           self.model.set('menu', 'Logout');
           self.model.set('url', '/logout');
           console.log('Successfully logged in!');
