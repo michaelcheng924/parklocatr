@@ -13,6 +13,15 @@ module.exports = function(app) {
     saveUninitialized: true
   }));
 
+  app.get('/dashboard', function(req, res) {
+    console.log('get dashboard!')
+    if (!req.session.isAuthenticated) {
+      res.redirect('/#login');
+    } else {
+      res.redirect('/#dashboard');
+    }
+  });
+
   app.get('/login', function(req, res) {
     res.redirect('/#login');
   });
@@ -25,6 +34,7 @@ module.exports = function(app) {
           bcrypt.compare(req.body.password, user.attributes.password, function(err, match) {
             if (match) {
               req.session.isAuthenticated = true;
+              console.log('test!!')
               res.redirect('/dashboard');
             } else {
               res.send('Incorrect password!');
@@ -48,7 +58,6 @@ module.exports = function(app) {
           res.send('Username already exists!');
         } else {
           bcrypt.hash(req.body.password, null, null, function(err, hash) {
-            console.log(hash);
             var user = new User({
               username: req.body.username,
               password: hash
@@ -64,15 +73,6 @@ module.exports = function(app) {
           
         }
       });
-
-      app.get('/dashboard', function(req, res) {
-        if (!req.session.isAuthenticated) {
-          res.redirect('/login');
-        } else {
-          res.redirect('/#dashboard');
-        }
-      });
-
   });
 
   app.use('/auth/local', require('./auth/local'));

@@ -9,6 +9,7 @@ var AppView = Backbone.View.extend({
 
     this.loginView.$el.hide();
     this.signupView.$el.hide();
+    this.dashboardView.$el.hide();
   }
 
 });

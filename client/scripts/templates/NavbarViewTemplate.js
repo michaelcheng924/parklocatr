@@ -21,13 +21,10 @@
             <a href="#">Home</a>
           </li>
           <li class="dashboard">
-            <a href="/#dashboard">Dashboard</a>
+            <a href="/dashboard">Dashboard</a>
           </li>
           <li class="login">
-            <a href="/#login">Login</a>
-          </li>
-          <li class="signup">
-            <a href="/#signup">Signup</a>
+            <a href="/#login">Login/Signup</a>
           </li>
         </ul>
       </div>
