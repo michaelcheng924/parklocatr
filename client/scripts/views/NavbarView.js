@@ -25,8 +25,9 @@ var NavbarView = Backbone.View.extend({
       url: 'scripts/templates/NavbarViewTemplate.js',
       dataType: 'html',
       success: function(data) {
-        var template = _.template(data, {});
-        this.$el.html(template());
+        console.log(this.model.attributes);
+        var template = _.template(data);
+        this.$el.html(template(this.model.attributes));
       }.bind(this)
     });
   }

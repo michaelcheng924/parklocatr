@@ -24,14 +24,16 @@ var LoginView = Backbone.View.extend({
           password: password
         }
       }).success(function(res) {
-        self.router.navigate('/dashboard', {trigger: true});
-        console.log('Successfully logged in!', res);
+        if (res === 'OK') {
+          self.router.navigate('/dashboard', {trigger: true});
+          console.log('Successfully logged in!', res);
+        }
       });
 
     }
   },
 
-  render: function() {
+  render: function(templateObject) {
     $.ajax({
       url: 'scripts/templates/LoginViewTemplate.js',
       dataType: 'html',

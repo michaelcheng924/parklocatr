@@ -34,8 +34,7 @@ module.exports = function(app) {
           bcrypt.compare(req.body.password, user.attributes.password, function(err, match) {
             if (match) {
               req.session.isAuthenticated = true;
-              console.log('test!!')
-              res.redirect('/dashboard');
+              res.send(200);
             } else {
               res.send('Incorrect password!');
             }

@@ -24,7 +24,7 @@
             <a href="/dashboard">Dashboard</a>
           </li>
           <li class="login">
-            <a href="/#login">Login/Signup</a>
+            <a href="<%- url %>"><%- menu %></a>
           </li>
         </ul>
       </div>
