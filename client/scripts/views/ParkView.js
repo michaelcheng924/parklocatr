@@ -1,8 +1,11 @@
 var ParkView = Backbone.View.extend({
 
-  template: _.template('<div class="parks-view-park"><h3><%- name %></h3> \
+  template: _.template('\
+    <div class="parks-view-park"> \
+      <h3><%- name %></h3> \
       <div>Location: <%- vicinity %></div> \
-      <div>Rating: <%- rating %></div></div>'),
+      <div>Rating: <%- rating %></div> \
+    </div>'),
 
   initialize: function() {
   },
