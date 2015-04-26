@@ -128,6 +128,10 @@ var MapView = Backbone.View.extend({
           infoWindow.setContent('<div class="info-window">' + result.name + '</div>');
           infoWindow.open(map, marker);
         });
+
+        setTimeout(function() {
+          $('body').animate({scrollTop: $('.right-column').offset().top}, 500);
+        }, 1500);
       });
 
       function toggleBounce() {
