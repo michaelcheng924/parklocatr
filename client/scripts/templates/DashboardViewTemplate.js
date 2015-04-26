@@ -1,7 +1,10 @@
-<div class="container dashboard-container">
+<div class="container view-container dashboard-container">
   <h1>Dashboard</h1>
 
-  <p>Welcome!</p>
+  <h2>Parks to visit</h2>
 
-  <p>More stuff</p>
+  <h2>Parks I've visited</h2>
+
+  <h2>Upload picture</h2>
+
 </div>

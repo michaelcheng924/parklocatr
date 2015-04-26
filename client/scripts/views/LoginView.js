@@ -28,9 +28,13 @@ var LoginView = Backbone.View.extend({
           localStorage.setItem('com.parklocatr', true);
           self.model.set('menu', 'Logout');
           self.model.set('url', '/logout');
-          self.router.navigate('/dashboard', {trigger: true});
           console.log('Successfully logged in!');
         }
+      }).then(function() {
+        setTimeout(function() {
+          self.router.navigate('/dashboard', {trigger: true});
+          console.log('testttt');
+        },20);
       });
 
     }

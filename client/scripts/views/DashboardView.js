@@ -4,6 +4,8 @@ var DashboardView = Backbone.View.extend({
   
   initialize: function() {
     this.render();
+
+    this.model.on('change', this.render, this);
   },
 
   render: function() {
@@ -21,6 +23,7 @@ var DashboardView = Backbone.View.extend({
         url: 'scripts/templates/DashboardViewTemplate.js',
         dataType: 'html',
         success: function(data) {
+
           var template = _.template(data, {});
           this.$el.html(template());
         }.bind(this)
