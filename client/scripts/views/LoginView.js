@@ -12,8 +12,8 @@ var LoginView = Backbone.View.extend({
     'click .login-submit': function(e) {
       e.preventDefault();
 
-      var username = $('.username-submit').val();
-      var password = $('.password-submit').val();
+      var username = $('.username-login').val();
+      var password = $('.password-login').val();
       var self = this;
       
       $.ajax({

@@ -66,12 +66,17 @@ module.exports = function(app) {
               console.log(newUser);
               Users.add(newUser);
               req.session.isAuthenticated = true;
-              res.redirect('/dashboard');
+              res.send(200);
             });
           });
           
         }
       });
+  });
+
+  app.get('/logout', function(req, res) {
+    req.session.destroy();
+    res.redirect('/');
   });
 
   app.use('/auth/local', require('./auth/local'));

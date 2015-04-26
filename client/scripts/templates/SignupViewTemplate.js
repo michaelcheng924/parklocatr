@@ -1,6 +1,6 @@
 <div class="container form-container">
   <h2>Sign up</h2>
-  <form action="/signup" class="signup-form" method="post">
+  <form>
       <div class="form-group">
         <label for="username">Username:</label>
         <input id="username" type="text" name="username" class="form-control username-signup">
@@ -10,7 +10,7 @@
         <input id="password" type="password" name="password" class="form-control password-signup">
       </div>
       <div>
-        <button class="btn btn-primary">Sign up</button>
+        <button class="btn btn-primary signup-submit">Sign up</button>
       </div>
   </form>
 
