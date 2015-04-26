@@ -181,6 +181,8 @@ h2 {
 
 .dashboard-container {
   text-align: left;
+  padding-top: 0;
+  padding-left: 40px;
 }
 
 /* =============== MEDIA QUERIES ================= */

@@ -33,7 +33,7 @@ var Router = Backbone.Router.extend({
     $('.dashboard-view').hide();
 
     $('nav li').removeClass('active');
-    $('.signup').addClass('active');
+    $('.login').addClass('active');
   },
 
   dashboard: function() {
