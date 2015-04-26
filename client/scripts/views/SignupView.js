@@ -25,11 +25,18 @@ var SignupView = Backbone.View.extend({
         }
       }).success(function(res) {
         if (res === 'OK') {
-          self.model.set('menu', 'Logout');
-          self.model.set('url', '/logout');
-          self.router.navigate('/dashboard', {trigger: true});
+          self.model.set({
+            menu: 'Logout',
+            url: '/logout',
+            class: 'logout',
+            loggedIn: true
+          });
           console.log('Successfully signed up!');
         }
+      }).then(function() {
+        setTimeout(function() {
+          self.router.navigate('/dashboard', {trigger: true});
+        },20);
       });
 
     }

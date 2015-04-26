@@ -23,7 +23,7 @@
           <li class="dashboard">
             <a href="/#dashboard">Dashboard</a>
           </li>
-          <li class="login">
+          <li class="{{class}}">
             <a href="<%- url %>"><%- menu %></a>
           </li>
         </ul>

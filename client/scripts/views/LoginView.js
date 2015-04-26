@@ -25,14 +25,17 @@ var LoginView = Backbone.View.extend({
         }
       }).success(function(res) {
         if (res === 'OK') {
-          self.model.set('menu', 'Logout');
-          self.model.set('url', '/logout');
+          self.model.set({
+            menu: 'Logout',
+            url: '/logout',
+            class: 'logout',
+            loggedIn: true
+          });
           console.log('Successfully logged in!');
         }
       }).then(function() {
         setTimeout(function() {
           self.router.navigate('/dashboard', {trigger: true});
-          console.log('testttt');
         },20);
       });
 

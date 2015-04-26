@@ -9,7 +9,7 @@ var DashboardView = Backbone.View.extend({
   },
 
   render: function() {
-    if (!localStorage.getItem('com.parklocatr')) {
+    if (!this.model.get('loggedIn')) {
       $.ajax({
         url: 'scripts/templates/PreDashboardViewTemplate.js',
         dataType: 'html',
