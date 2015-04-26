@@ -19,4 +19,16 @@ db.knex.schema.hasTable('users').then(function(exists) {
   }
 });
 
+db.knex.schema.hasTable('parks').then(function(exists) {
+  if (!exists) {
+    db.knex.schema.createTable('parks', function(park) {
+      park.increments('id').primary();
+      park.string('name', 150);
+      park.string('address', 255);
+    }).then(function(table) {
+      console.log('Created Table', table);
+    });
+  }
+});
+
 module.exports = db;
