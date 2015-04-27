@@ -64,8 +64,7 @@ var ParkView = Backbone.View.extend({
     });
   },
 
-  saveParkToVisit: function(e) {
-    e.preventDefault();
+  saveParkToVisit: function() {
 
     var router = new Router();
     var self = this;

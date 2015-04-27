@@ -31,11 +31,14 @@ var DashboardView = Backbone.View.extend({
             },
             success: function(visitedParks) {
               console.log('got visited parks!', visitedParks);
-            }
-          });
+              var template = _.template(data, {});
+              this.$el.html(template());
 
-          var template = _.template(data, {});
-          this.$el.html(template());
+              _.each(visitedParks, function(park) {
+                $('.parks-to-visit-display').append('<h3>' + park.name + '</h3><div>' + park.address + '</div>');
+              });
+            }.bind(this)
+          });
         }.bind(this)
       });
     }
