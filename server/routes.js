@@ -65,18 +65,17 @@ module.exports = function(app) {
   });
 
   app.post('/parks-to-visit', function(req, res) {
+    console.log(req.body);
     var token = req.headers['x-access-token'];
     if (!token) {
       res.send('No token!');
     } else {
       var user = jwt.decode(token, 'secret');
-      console.log(user);
-      console.log(req.body.parkName);
 
       new User({ username: user.username })
         .fetch()
         .then(function(foundUser) {
-          
+          console.log(foundUser);
         });
     }
   });
