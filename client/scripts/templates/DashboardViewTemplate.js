@@ -16,11 +16,11 @@
 
   <hr>
 
-  <h2>Upload picture</h2>
+  <center><h2>Upload picture</h2>
 
   <form>
     <input type="file" name="parkPhoto">
     <button class="btn btn-primary photo-submit">Submit</button>
-  </form
+  </form></center>
 
 </div>
