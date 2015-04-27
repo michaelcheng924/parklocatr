@@ -19,9 +19,9 @@ db.knex.schema.hasTable('users').then(function(exists) {
   }
 });
 
-db.knex.schema.hasTable('parks').then(function(exists) {
+db.knex.schema.hasTable('parks_to_visit').then(function(exists) {
   if (!exists) {
-    db.knex.schema.createTable('parks', function(park) {
+    db.knex.schema.createTable('parks_to_visit', function(park) {
       park.increments('id').primary();
       park.string('name', 150);
       park.string('address', 255);

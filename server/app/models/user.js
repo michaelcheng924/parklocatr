@@ -1,10 +1,10 @@
 var db = require('../../config/db');
-var Park = require('./park');
+var ParkToVisit = require('./parkToVisit');
 
 var User = db.Model.extend({
   tableName: 'users',
   user: function() {
-    return this.hasMany(Park);
+    return this.hasMany(ParkToVisit);
   },
 
   initialize: function() {

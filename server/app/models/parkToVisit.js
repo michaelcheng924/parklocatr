@@ -1,8 +1,8 @@
 var db = require('../../config/db');
 var User = require('./user');
 
-var Park = db.Model.extend({
-  tableName: 'parks',
+var ParkToVisit = db.Model.extend({
+  tableName: 'parks_to_visit',
   park: function() {
     return this.belongsTo(User);
   },
@@ -11,4 +11,4 @@ var Park = db.Model.extend({
   }
 });
 
-module.exports = Park;
+module.exports = ParkToVisit;
