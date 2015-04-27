@@ -29,8 +29,8 @@ var SignupView = Backbone.View.extend({
             menu: 'Logout',
             url: '/#logout',
             className: 'logout',
-            token: res.token
           });
+          localStorage.setItem('com.parklocatr', res.token);
           console.log('Successfully signed up!');
         }
       }).then(function() {

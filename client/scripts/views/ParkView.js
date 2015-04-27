@@ -5,7 +5,7 @@ var ParkView = Backbone.View.extend({
       <h3><%- name %></h3> \
       <div>Location: <%- vicinity %></div> \
       <div>Rating: <%- rating %></div><br> \
-      <div><a class="want-to-visit">Add to "Parks to Visit"!</a> | <a class="already-visited">Add to "Parks I\'ve Visited"!</a></div> \
+      <div><a class="park-to-visit">Add to "Parks to Visit"!</a> | <a class="visited-park">Add to "Parks I\'ve Visited"!</a></div> \
     </div>'),
 
   initialize: function() {
@@ -13,7 +13,8 @@ var ParkView = Backbone.View.extend({
 
   events: {
     'click': 'getParkDetails',
-    'click .want-to-visit': 'wantToVisit'
+    'click .park-to-visit': 'saveParkToVisit',
+    'click .visited-park': 'saveVisitedPark'
   },
 
   render: function() {
@@ -62,7 +63,17 @@ var ParkView = Backbone.View.extend({
     });
   },
 
-  wantToVisit: function() {
-    
+  saveParkToVisit: function() {
+    $.ajax({
+      type: 'POST',
+      url: '/parks-to-visit',
+      headers: {
+        'x-access-token': 
+      }
+    })
+  },
+
+  saveVisitedPark: function() {
+
   }
 });

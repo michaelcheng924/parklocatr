@@ -22,8 +22,8 @@ var NavbarView = Backbone.View.extend({
         menu: 'Login',
         url: '/#login',
         className: 'login',
-        token: false
       });
+      localStorage.removeItem('com.parklocatr');
       this.router.navigate('/', {trigger: true});
     }
   },
