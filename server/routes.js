@@ -113,14 +113,44 @@ module.exports = function(app) {
                 });
               }
             });
-
-
         });
     }
   });
 
   app.post('/visited-parks', function(req, res) {
+    var token = req.headers['x-access-token'];
+    if (!token) {
+      res.send('No token!');
+    } else {
+      var user = jwt.decode(token, 'secret');
 
+      new User({ username: user.username })
+        .fetch()
+        .then(function(foundUser) {
+          console.log(foundUser.attributes.id);
+
+          new VisitedPark({name: req.body.parkName})
+            .fetch()
+            .then(function(foundVisitedPark) {
+              if (foundVisitedPark) {
+                console.log('park already exists!');
+                res.send('Park already in list!');
+              } else {
+                var visitedPark = new VisitedPark({
+                  name: req.body.parkName,
+                  address: req.body.address,
+                  user_id: foundUser.attributes.id
+                });
+
+                visitedPark.save().then(function(newVisitedPark) {
+                  VisitedParks.add(newParkToVisit);
+                  console.log('Added visitedPark!');
+                  res.send(200, newVisitedPark);
+                });
+              }
+            });
+        });
+    }
   });
 
   app.use('/auth/local', require('./auth/local'));
