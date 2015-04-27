@@ -60,5 +60,9 @@ var ParkView = Backbone.View.extend({
         $('body').animate({scrollTop: $('.right-column').offset().top}, 500);
       }, 1500);
     });
+  },
+
+  wantToVisit: function() {
+    
   }
 });

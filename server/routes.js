@@ -7,20 +7,6 @@ var Users = require('./app/collections/users');
 module.exports = function(app) {
   
   app.use(bodyParser());
-  app.use(session({
-    secret: 'shhhsupersecretsecret',
-    resave: false,
-    saveUninitialized: true
-  }));
-
-  app.get('/dashboard', function(req, res) {
-    console.log('get dashboard!')
-    if (!req.session.isAuthenticated) {
-      res.redirect('/#login');
-    } else {
-      res.redirect('/#dashboard');
-    }
-  });
 
   app.get('/login', function(req, res) {
     res.redirect('/#login');
@@ -33,7 +19,6 @@ module.exports = function(app) {
         if (user) {
           bcrypt.compare(req.body.password, user.attributes.password, function(err, match) {
             if (match) {
-              req.session.isAuthenticated = true;
               res.send(200);
             } else {
               res.send('Incorrect password!');
@@ -65,7 +50,6 @@ module.exports = function(app) {
             user.save().then(function(newUser) {
               console.log(newUser);
               Users.add(newUser);
-              req.session.isAuthenticated = true;
               res.send(200);
             });
           });
@@ -75,7 +59,6 @@ module.exports = function(app) {
   });
 
   app.get('/logout', function(req, res) {
-    req.session.destroy();
     res.redirect('/');
   });
 
