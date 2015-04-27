@@ -61,7 +61,13 @@ module.exports = function(app) {
   });
 
   app.get('/parks-to-visit', function(req, res) {
-
+    var token = req.headers['x-access-token'];
+    if (!token) {
+      res.send('No token!');
+    } else {
+      var user = jwt.decode(token, 'secret');
+      console.log(user);
+    }
   });
 
   app.get('/visited-parks', function(req, res) {
