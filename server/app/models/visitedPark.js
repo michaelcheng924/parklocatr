@@ -4,7 +4,7 @@ var User = require('./user');
 var VisitedPark = db.Model.extend({
   tableName: 'visited_parks',
   park: function() {
-    return this.belongsToMany(User);
+    return this.belongsToMany(User, 'user_id');
   },
 
   initialize: function() {

@@ -19,12 +19,17 @@ db.knex.schema.hasTable('users').then(function(exists) {
   }
 });
 
+// db.knex.schema.dropTable('parks').then(function() {
+//   console.log('dropped!');
+// });
+
 db.knex.schema.hasTable('parks_to_visit').then(function(exists) {
   if (!exists) {
     db.knex.schema.createTable('parks_to_visit', function(park) {
       park.increments('id').primary();
       park.string('name', 150);
       park.string('address', 255);
+      park.integer('user_id');
     }).then(function(table) {
       console.log('Created Table', table);
     });
@@ -37,6 +42,7 @@ db.knex.schema.hasTable('visited_parks').then(function(exists) {
       park.increments('id').primary();
       park.string('name', 150);
       park.string('address', 255);
+      park.integer('user_id');
     }).then(function(table) {
       console.log('Created Table', table);
     });
