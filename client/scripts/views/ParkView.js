@@ -1,12 +1,12 @@
 var ParkView = Backbone.View.extend({
 
-  template: _.template('\
-    <div class="parks-view-park"> \
+  template: _.template("\
+    <div class='parks-view-park'> \
       <h3><%- name %></h3> \
       <div>Location: <%- vicinity %></div> \
       <div>Rating: <%- rating %></div><br> \
-      <div><a class="park-to-visit">Add to "Parks to Visit"!</a> | <a class="visited-park">Add to "Parks I\'ve Visited"!</a></div> \
-    </div>'),
+      <div><a class='park-to-visit'>Add to <em>Parks to Visit</em>!</a> | <a class='visited-park'>Add to <em>Parks I've Visited</em>!</a></div> \
+    </div>"),
 
   initialize: function() {
   },
@@ -64,13 +64,25 @@ var ParkView = Backbone.View.extend({
   },
 
   saveParkToVisit: function() {
-    $.ajax({
-      type: 'POST',
-      url: '/parks-to-visit',
-      headers: {
-        'x-access-token': localStorage.getItem('com.parklocatr')
-      }
-    });
+    if (!localStorage.getItem('com.parklocatr')) {
+      var router = new Router();
+
+      router.navigate('/dashboard', {trigger: true});
+    } else {
+      var parkName = this.model.name;
+      console.log(this.model.get('name'));
+
+      $.ajax({
+        type: 'POST',
+        url: '/parks-to-visit',
+        headers: {
+          'x-access-token': localStorage.getItem('com.parklocatr')
+        },
+        data: {
+          parkName: parkName
+        }
+      });
+    }
   },
 
   saveVisitedPark: function() {

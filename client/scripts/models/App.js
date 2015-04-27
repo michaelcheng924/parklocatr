@@ -1,7 +1,7 @@
 var App = Backbone.Model.extend({
 
   initialize: function() {
-    localStorage.removeItem('com.parklocatr');
+    // localStorage.removeItem('com.parklocatr');
 
     this.set('navbarSetting', new NavbarSetting());
     this.set('router', new Router());

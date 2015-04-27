@@ -71,6 +71,7 @@ module.exports = function(app) {
     } else {
       var user = jwt.decode(token, 'secret');
       console.log(user);
+      console.log(req.body.parkName);
 
       new User({ username: user.username })
         .fetch()

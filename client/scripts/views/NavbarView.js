@@ -34,6 +34,15 @@ var NavbarView = Backbone.View.extend({
       dataType: 'html',
       success: function(data) {
         var template = _.template(data);
+
+        if (localStorage.getItem('com.parklocatr')) {
+          this.model.set({
+            menu: 'Logout',
+            url: '/logout',
+            className: 'logout'
+          });
+        }
+
         this.$el.html(template(this.model.attributes));
       }.bind(this)
     });
