@@ -159,7 +159,7 @@ module.exports = function(app) {
                 });
 
                 visitedPark.save().then(function(newVisitedPark) {
-                  VisitedParks.add(newParkToVisit);
+                  VisitedParks.add(newVisitedPark);
                   console.log('Added visitedPark!');
                   res.send(200, newVisitedPark);
                 });

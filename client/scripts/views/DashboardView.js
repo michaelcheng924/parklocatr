@@ -29,12 +29,14 @@ var DashboardView = Backbone.View.extend({
             headers: {
               'x-access-token': localStorage.getItem('com.parklocatr')
             },
-            success: function(visitedParks) {
+            success: function(parksToVisit) {
               var template = _.template(data, {});
               this.$el.html(template());
 
-              _.each(visitedParks, function(park) {
-                $('.parks-to-visit-display').append('<h3>' + park.name + '</h3><div>' + park.address + '</div>');
+              var display = $('.parks-to-visit-display');
+              display.html('');
+              _.each(parksToVisit, function(park) {
+                display.append('<h3>' + park.name + '</h3><div>' + park.address + '</div>');
               });
             }.bind(this)
           }).then(function() {
@@ -44,13 +46,13 @@ var DashboardView = Backbone.View.extend({
                 'x-access-token': localStorage.getItem('com.parklocatr')
               },
               success: function(visitedParks) {
-                var template = _.template(data, {});
-                this.$el.html(template());
-
+                var display = $('.visited-parks-display');
+                display.html('');
                 _.each(visitedParks, function(park) {
-                  $('.visited-parks-display').append('<h3>' + park.name + '</h3><div>' + park.address + '</div>');
+                  display.append('<h3>' + park.name + '</h3><div>' + park.address + '</div>');
                 });
               }.bind(this)
+            });
           });
         }.bind(this)
       });
