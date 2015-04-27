@@ -10,15 +10,11 @@ var App = Backbone.Model.extend({
     this.set('navbarView', new NavbarView({model: this.get('navbarSetting')}));
     this.set('loginView', new LoginView({model: this.get('navbarSetting')}));
     this.set('signupView', new SignupView({model: this.get('navbarSetting')}));
-    this.set('dashboardView', new DashboardView());
+    this.set('dashboardView', new DashboardView({model: this.get('navbarSetting')}));
 
     this.get('loginView').$el.hide();
     this.get('signupView').$el.hide();
     this.get('dashboardView').$el.hide();
-
-    this.get('navbarSetting').on('loggedIn', function() {
-      console.log('app loggggged in!')
-    }.bind(this));
   }
 
 });

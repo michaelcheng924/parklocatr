@@ -4,6 +4,8 @@ var DashboardView = Backbone.View.extend({
   
   initialize: function() {
     this.render();
+
+    this.model.on('loggedIn', this.render, this);
   },
 
   render: function() {
