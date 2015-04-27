@@ -31,6 +31,7 @@ var LoginView = Backbone.View.extend({
             className: 'logout',
           });
           localStorage.setItem('com.parklocatr', res.token);
+          self.model.login();
           console.log('Successfully logged in!');
         }
       }).then(function() {

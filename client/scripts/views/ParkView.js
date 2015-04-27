@@ -68,9 +68,9 @@ var ParkView = Backbone.View.extend({
       type: 'POST',
       url: '/parks-to-visit',
       headers: {
-        'x-access-token': 
+        'x-access-token': localStorage.getItem('com.parklocatr')
       }
-    })
+    });
   },
 
   saveVisitedPark: function() {
