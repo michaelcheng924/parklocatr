@@ -91,5 +91,25 @@ var ParkView = Backbone.View.extend({
 
   saveVisitedPark: function() {
 
+    if (!localStorage.getItem('com.parklocatr')) {
+      this.router.navigate('/dashboard', {trigger: true});
+    } else {
+
+      $.ajax({
+        type: 'POST',
+        url: '/visited-parks',
+        data: {
+          parkName: this.model.get('name'),
+          address: this.model.get('vicinity')
+        },
+        headers: {
+          'x-access-token': localStorage.getItem('com.parklocatr')
+        },
+        success: function() {
+          this.model.set('visitedText', 'Added!');
+        }.bind(this)
+      });
+    }
+
   }
 });
