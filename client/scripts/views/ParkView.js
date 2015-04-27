@@ -64,9 +64,9 @@ var ParkView = Backbone.View.extend({
   },
 
   saveParkToVisit: function() {
-    if (!localStorage.getItem('com.parklocatr')) {
-      var router = new Router();
+    var router = new Router();
 
+    if (!localStorage.getItem('com.parklocatr')) {
       router.navigate('/dashboard', {trigger: true});
     } else {
 
@@ -79,6 +79,9 @@ var ParkView = Backbone.View.extend({
         },
         headers: {
           'x-access-token': localStorage.getItem('com.parklocatr')
+        },
+        success: function() {
+          $('.park-to-visit').text('Added to <em>Parks to Visit</em>!');
         }
       });
     }

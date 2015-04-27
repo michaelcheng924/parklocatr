@@ -76,17 +76,27 @@ module.exports = function(app) {
         .then(function(foundUser) {
           console.log(foundUser.attributes.id);
 
-          var parkToVisit = new ParkToVisit({
-            name: req.body.parkName,
-            address: req.body.address,
-            user_id: foundUser.attributes.id
-          });
+          new ParkToVisit({name: req.body.parkName})
+            .fetch()
+            .then(function(foundParkToVisit) {
+              if (foundParkToVisit) {
+                console.log('park already exists!');
+                res.send('Park already in list!');
+              } else {
+                var parkToVisit = new ParkToVisit({
+                  name: req.body.parkName,
+                  address: req.body.address,
+                  user_id: foundUser.attributes.id
+                });
 
-          parkToVisit.save().then(function(newParkToVisit) {
-            ParksToVisit.add(newParkToVisit);
-            console.log('Added parkToVisit!');
-            res.send(200, newParkToVisit);
-          });
+                parkToVisit.save().then(function(newParkToVisit) {
+                  ParksToVisit.add(newParkToVisit);
+                  console.log('Added parkToVisit!');
+                  res.send(200, newParkToVisit);
+                });
+              }
+            });
+
 
         });
     }
