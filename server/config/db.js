@@ -31,4 +31,16 @@ db.knex.schema.hasTable('parks_to_visit').then(function(exists) {
   }
 });
 
+db.knex.schema.hasTable('visited_parks').then(function(exists) {
+  if (!exists) {
+    db.knex.schema.createTable('visited_parks', function(park) {
+      park.increments('id').primary();
+      park.string('name', 150);
+      park.string('address', 255);
+    }).then(function(table) {
+      console.log('Created Table', table);
+    });
+  }
+});
+
 module.exports = db;
