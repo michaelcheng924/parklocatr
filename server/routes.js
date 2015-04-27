@@ -3,6 +3,10 @@ var bcrypt = require('bcrypt-nodejs');
 var jwt = require('jwt-simple');
 var User = require('./app/models/user');
 var Users = require('./app/collections/users');
+var ParkToVisit = require('./app/models/parkToVisit');
+var ParksToVisit = require('./app/collections/parksToVisit');
+var VisitedPark = require('./app/models/visitedPark');
+var VisitedParks = require('./app/collections/VisitedParks');
 
 module.exports = function(app) {
   
@@ -60,7 +64,7 @@ module.exports = function(app) {
       });
   });
 
-  app.get('/parks-to-visit', function(req, res) {
+  app.post('/parks-to-visit', function(req, res) {
     var token = req.headers['x-access-token'];
     if (!token) {
       res.send('No token!');
