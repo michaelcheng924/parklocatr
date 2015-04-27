@@ -117,6 +117,22 @@ module.exports = function(app) {
     }
   });
 
+  app.get('/visited-parks', function(req, res) {
+
+    var token = req.headers['x-access-token'];
+    if (!token) {
+      res.send('No token!');
+    } else {
+      var user = jwt.decode(token, 'secret');
+
+      db.knex('visited_parks').then(function(collection) {
+        console.log(collection);
+        res.send(collection);
+      });
+    }
+
+  });
+
   app.post('/visited-parks', function(req, res) {
     var token = req.headers['x-access-token'];
     if (!token) {
