@@ -7,8 +7,8 @@ var MapView = Backbone.View.extend({
   },
 
   render: function() {
-    // var map;
-    // var infoWindow;
+    var self = this;
+
     var service;
 
     var mapOptions = {
@@ -90,9 +90,9 @@ var MapView = Backbone.View.extend({
       for (var i = 0, result; result = results[i]; i++) {
         createMarker(result);
         var park = new Park(result);
-        parks.add(park);
+        self.model.get('parks').add(park);
       }
-      var parksView = new ParksView({collection: parks});
+      var parksView = new ParksView({collection: self.model.get('parks')});
     }
 
     function createMarker(place) {

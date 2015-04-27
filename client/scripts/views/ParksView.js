@@ -4,6 +4,10 @@ var ParksView = Backbone.View.extend({
 
   initialize: function() {
     this.render();
+
+    this.collection.on('change', function() {
+      this.collection.update();
+    }.bind(this));
   },
 
   render: function() {

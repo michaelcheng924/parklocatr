@@ -1,3 +1,7 @@
 var Parks = Backbone.Collection.extend({
-  model: Park
+  model: Park,
+
+  update: function() {
+    this.trigger('updateTrigger');
+  }
 });

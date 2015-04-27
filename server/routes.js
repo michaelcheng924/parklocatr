@@ -1,6 +1,7 @@
 var bodyParser = require('body-parser');
 var bcrypt = require('bcrypt-nodejs');
 var jwt = require('jwt-simple');
+var db = require('./config/db');
 var User = require('./app/models/user');
 var Users = require('./app/collections/users');
 var ParkToVisit = require('./app/models/parkToVisit');
@@ -71,6 +72,11 @@ module.exports = function(app) {
       res.send('No token!');
     } else {
       var user = jwt.decode(token, 'secret');
+
+      db.knex('parks_to_visit').then(function(collection) {
+        console.log(collection);
+        res.send(collection)
+      });
     }
 
   });
