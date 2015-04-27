@@ -17,8 +17,14 @@ var NavbarView = Backbone.View.extend({
     'click .login': function() {      
       this.router.navigate('/login', {trigger: true});
     },
-    'click .signup': function() {
-      this.router.navigate('/signup', {trigger: true});
+    'click .logout': function() {
+      this.model.set({
+        menu: 'Login',
+        url: '/#login',
+        className: 'login',
+        token: false
+      });
+      this.router.navigate('/', {trigger: true});
     }
   },
 

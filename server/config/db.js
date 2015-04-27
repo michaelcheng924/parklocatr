@@ -19,10 +19,6 @@ db.knex.schema.hasTable('users').then(function(exists) {
   }
 });
 
-// db.knex.schema.dropTable('parks').then(function() {
-//   console.log('dropped!');
-// });
-
 db.knex.schema.hasTable('parks_to_visit').then(function(exists) {
   if (!exists) {
     db.knex.schema.createTable('parks_to_visit', function(park) {
@@ -48,5 +44,13 @@ db.knex.schema.hasTable('visited_parks').then(function(exists) {
     });
   }
 });
+
+// db.knex.schema.dropTable('parks').then(function() {
+//   console.log('dropped!');
+// });
+
+// db.knex('users').then(function(collection) {
+//   console.log(collection);
+// });
 
 module.exports = db;

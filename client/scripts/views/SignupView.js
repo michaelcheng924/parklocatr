@@ -27,7 +27,7 @@ var SignupView = Backbone.View.extend({
         if (res === 'OK') {
           self.model.set({
             menu: 'Logout',
-            url: '/logout',
+            url: '/#logout',
             className: 'logout',
             token: res.token
           });
