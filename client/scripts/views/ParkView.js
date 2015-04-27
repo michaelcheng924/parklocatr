@@ -69,13 +69,13 @@ var ParkView = Backbone.View.extend({
 
       router.navigate('/dashboard', {trigger: true});
     } else {
-      var parkName = this.model.get('name');
 
       $.ajax({
         type: 'POST',
         url: '/parks-to-visit',
         data: {
-          parkName: parkName
+          parkName: this.model.get('name'),
+          address: this.model.get('vicinity')
         },
         headers: {
           'x-access-token': localStorage.getItem('com.parklocatr')
