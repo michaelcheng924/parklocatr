@@ -7,40 +7,48 @@ var Router = Backbone.Router.extend({
   },
 
   index: function() {
-    $('.main-page').show();
-    $('.login-view').hide();
-    $('.signup-view').hide();
-    $('.dashboard-view').hide();
+    setTimeout(function() {
+      $('.main-page').fadeIn();
+    }, 500);
+    $('.login-view').fadeOut();
+    $('.signup-view').fadeOut();
+    $('.dashboard-view').fadeOut();
 
     $('nav li').removeClass('active');
     $('.home').addClass('active');
   },
 
   login: function() {
-    $('.login-view').show();
-    $('.main-page').hide();
-    $('.signup-view').hide();
-    $('.dashboard-view').hide();
+    setTimeout(function() {
+      $('.login-view').fadeIn();
+    }, 500);
+    $('.main-page').fadeOut();
+    $('.signup-view').fadeOut();
+    $('.dashboard-view').fadeOut();
 
     $('nav li').removeClass('active');
     $('.login').addClass('active');
   },
 
   signup: function() {
-    $('.signup-view').show();
-    $('.main-page').hide();
-    $('.login-view').hide();
-    $('.dashboard-view').hide();
+    setTimeout(function() {
+      $('.signup-view').fadeIn();
+    }, 500);
+    $('.main-page').fadeOut();
+    $('.login-view').fadeOut();
+    $('.dashboard-view').fadeOut();
 
     $('nav li').removeClass('active');
     $('.login').addClass('active');
   },
 
   dashboard: function() {
-    $('.dashboard-view').show();
-    $('.main-page').hide();
-    $('.login-view').hide();
-    $('.signup-view').hide();
+    setTimeout(function() {
+      $('.dashboard-view').fadeIn();
+    }, 500);
+    $('.main-page').fadeOut();
+    $('.login-view').fadeOut();
+    $('.signup-view').fadeOut();
 
     $('nav li').removeClass('active');
     $('.dashboard').addClass('active');
