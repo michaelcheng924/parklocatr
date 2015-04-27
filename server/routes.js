@@ -73,9 +73,8 @@ module.exports = function(app) {
     } else {
       var user = jwt.decode(token, 'secret');
 
-      db.knex('parks_to_visit').then(function(collection) {
-        console.log(collection);
-        res.send(collection)
+      db.knex('parks_to_visit').where({user_id: user.id}).then(function(collection) {
+        res.send(collection);
       });
     }
 
@@ -124,9 +123,9 @@ module.exports = function(app) {
       res.send('No token!');
     } else {
       var user = jwt.decode(token, 'secret');
+      console.log(user);
 
-      db.knex('visited_parks').then(function(collection) {
-        console.log(collection);
+      db.knex('visited_parks').where({user_id: user.id}).then(function(collection) {
         res.send(collection);
       });
     }
