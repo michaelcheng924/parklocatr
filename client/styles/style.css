@@ -80,7 +80,6 @@ h2 {
   color: #FFF;
   background: #275C1B;
   padding: 15px;
-  margin-bottom: 15px;
   cursor: pointer;
   transition: background .3s;
 }
@@ -94,13 +93,23 @@ h2 {
   margin-top: 0;
 }
 
-.parks-view-park a {
-  color: #F1BA63;
-  transition: color .3s;
+.dashboard-links-container {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 15px;
+  border-left: 1px solid #747372;
+  border-bottom: 1px solid #747372;
+  border-right: 1px solid #747372;
 }
 
-.parks-view-park a:hover {
+.dashboard-links-container a {
   color: #C49650;
+  transition: color .3s;
+  cursor: pointer;
+}
+
+.dashboard-links-container a:hover {
+  color: #F1BA63;
 }
 
 .park-details-info a {

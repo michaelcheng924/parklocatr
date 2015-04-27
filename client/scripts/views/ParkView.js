@@ -4,15 +4,16 @@ var ParkView = Backbone.View.extend({
     <div class='parks-view-park'> \
       <h3><%- name %></h3> \
       <div>Location: <%- vicinity %></div> \
-      <div>Rating: <%- rating %></div><br> \
-      <div><a class='park-to-visit'>Add to <em>Parks to Visit</em>!</a> | <a class='visited-park'>Add to <em>Parks I've Visited</em>!</a></div> \
-    </div>"),
+      <div>Rating: <%- rating %></div> \
+    </div> \
+    <div class='dashboard-links-container'><a class='park-to-visit'><%= toVisitText %></a> | <a class='visited-park'><%= visitedText %></a></div>"),
 
   initialize: function() {
+    this.model.on('change', this.render, this);
   },
 
   events: {
-    'click': 'getParkDetails',
+    'click .parks-view-park': 'getParkDetails',
     'click .park-to-visit': 'saveParkToVisit',
     'click .visited-park': 'saveVisitedPark'
   },
@@ -63,8 +64,11 @@ var ParkView = Backbone.View.extend({
     });
   },
 
-  saveParkToVisit: function() {
+  saveParkToVisit: function(e) {
+    e.preventDefault();
+
     var router = new Router();
+    var self = this;
 
     if (!localStorage.getItem('com.parklocatr')) {
       router.navigate('/dashboard', {trigger: true});
@@ -81,7 +85,7 @@ var ParkView = Backbone.View.extend({
           'x-access-token': localStorage.getItem('com.parklocatr')
         },
         success: function() {
-          $('.park-to-visit').text('Added to <em>Parks to Visit</em>!');
+          self.model.set('toVisitText', 'Added!');
         }
       });
     }
