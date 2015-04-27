@@ -60,8 +60,12 @@ module.exports = function(app) {
       });
   });
 
-  app.get('/logout', function(req, res) {
-    res.redirect('/');
+  app.get('/parks-to-visit', function(req, res) {
+
+  });
+
+  app.get('/visited-parks', function(req, res) {
+
   });
 
   app.use('/auth/local', require('./auth/local'));

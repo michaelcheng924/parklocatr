@@ -23,6 +23,10 @@
 <% }) %></div>
 
 <div class="park-details-info">
+  <br>
+  <div class="visit-div"><a class="want-to-visit">Add to "Parks to Visit"!</a></div>
+  <div class="visit-div"><a class="already-visited">Add to "Parks I\'ve Visited"!</a></div>
+
   <h4><strong>Address:</strong></h4>
   <div><%- formatted_address %></div>
 

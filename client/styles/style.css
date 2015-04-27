@@ -95,12 +95,22 @@ h2 {
 }
 
 .parks-view-park a {
-  color: #f1ba63;
+  color: #F1BA63;
   transition: color .3s;
 }
 
 .parks-view-park a:hover {
   color: #C49650;
+}
+
+.park-details-info a {
+  color: #C49650;
+  transition: color .3s;
+  cursor: pointer;
+}
+
+.park-details-info a:hover {
+  color: #F1BA63;
 }
 
 .park-details-view-container {
