@@ -30,7 +30,6 @@ var DashboardView = Backbone.View.extend({
               'x-access-token': localStorage.getItem('com.parklocatr')
             },
             success: function(visitedParks) {
-              console.log('got visited parks!', visitedParks);
               var template = _.template(data, {});
               this.$el.html(template());
 

@@ -9,6 +9,8 @@ var ParkView = Backbone.View.extend({
     <div class='dashboard-links-container'><a class='park-to-visit'><%= toVisitText %></a> | <a class='visited-park'><%= visitedText %></a></div>"),
 
   initialize: function() {
+    this.router = new Router();
+
     this.model.on('change', this.render, this);
   },
 
@@ -66,11 +68,8 @@ var ParkView = Backbone.View.extend({
 
   saveParkToVisit: function() {
 
-    var router = new Router();
-    var self = this;
-
     if (!localStorage.getItem('com.parklocatr')) {
-      router.navigate('/dashboard', {trigger: true});
+      this.router.navigate('/dashboard', {trigger: true});
     } else {
 
       $.ajax({
@@ -84,8 +83,8 @@ var ParkView = Backbone.View.extend({
           'x-access-token': localStorage.getItem('com.parklocatr')
         },
         success: function() {
-          self.model.set('toVisitText', 'Added!');
-        }
+          this.model.set('toVisitText', 'Added!');
+        }.bind(this)
       });
     }
   },
