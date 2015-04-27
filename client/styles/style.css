@@ -76,21 +76,31 @@ h2 {
 }
 
 .parks-view-park {
+  text-align: center;
   color: #FFF;
   background: #2F6C20;
   padding: 15px;
   margin-bottom: 15px;
   cursor: pointer;
+  transition: background .3s;
 }
 
 .parks-view-park:hover {
-  color: #2F6C20;
-  background: #fff;
-  border: 1px solid #1c4013;
+  color: #FFF;
+  background: #3D8E29;
 }
 
 .parks-view-park h3 {
   margin-top: 0;
+}
+
+.parks-view-park a {
+  color: #f1ba63;
+  transition: color .3s;
+}
+
+.parks-view-park a:hover {
+  color: #C49650;
 }
 
 .park-details-view-container {

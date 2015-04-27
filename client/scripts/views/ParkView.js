@@ -4,7 +4,8 @@ var ParkView = Backbone.View.extend({
     <div class="parks-view-park"> \
       <h3><%- name %></h3> \
       <div>Location: <%- vicinity %></div> \
-      <div>Rating: <%- rating %></div> \
+      <div>Rating: <%- rating %></div><br> \
+      <div><a class="want-to-visit">Add to "Parks to Visit"!</a> | <a class="already-visited">Add to "Parks I\'ve Visited"!</a></div> \
     </div>'),
 
   initialize: function() {
@@ -12,9 +13,8 @@ var ParkView = Backbone.View.extend({
 
   events: {
     'click': function() {
-      console.log(map);
       var service = new google.maps.places.PlacesService(map);
-      // infoWindow.close();
+
       service.getDetails(this.model.attributes, function(result, status) {
         if (status != google.maps.places.PlacesServiceStatus.OK) {
           alert(status);
@@ -24,10 +24,7 @@ var ParkView = Backbone.View.extend({
         var parkDetails = new ParkDetails(result);
         var parkDetailsView = new ParkDetailsView({model: parkDetails});
 
-        // createMarker(result);
-
         infoWindow.close();
-        // infoWindow.setPosition(result.geometry.location);
 
         if (result.photos) {
           var photos = result.photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35});
