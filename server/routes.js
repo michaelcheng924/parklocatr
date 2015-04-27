@@ -71,6 +71,12 @@ module.exports = function(app) {
     } else {
       var user = jwt.decode(token, 'secret');
       console.log(user);
+
+      new User({ username: user.username })
+        .fetch()
+        .then(function(foundUser) {
+          
+        });
     }
   });
 
