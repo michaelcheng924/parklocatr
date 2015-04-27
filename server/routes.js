@@ -169,6 +169,16 @@ module.exports = function(app) {
     }
   });
 
+app.get('/get-username', function(req, res) {
+
+  var token = req.headers['x-access-token'];
+  
+  var user = jwt.decode(token, 'secret');
+
+  res.send(user.username);
+
+});
+
   app.use('/auth/local', require('./auth/local'));
 
 };

@@ -39,7 +39,7 @@ var NavbarView = Backbone.View.extend({
           this.model.set({
             menu: 'Logout',
             url: '/#logout',
-            className: 'logout'
+            className: 'logout',
           });
         }
 

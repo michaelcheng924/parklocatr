@@ -3,6 +3,7 @@ var NavbarSetting = Backbone.Model.extend({
     menu: 'Login/Signup',
     url: '/#login',
     className: 'login',
+    message: ''
   },
 
   login: function() {

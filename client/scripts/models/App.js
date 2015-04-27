@@ -1,9 +1,21 @@
 var App = Backbone.Model.extend({
 
   initialize: function() {
-    // localStorage.removeItem('com.parklocatr');
 
     this.set('navbarSetting', new NavbarSetting());
+
+    if (localStorage.getItem('com.parklocatr')) {
+      $.ajax({
+        url: '/get-username',
+        headers: {
+          'x-access-token': localStorage.getItem('com.parklocatr')
+        },
+        success: function(username) {
+          this.get('navbarSetting').set('message', 'Greetings, ' + username + '!');
+        }.bind(this)
+      });
+    }
+
     this.set('router', new Router());
 
     this.set('parks', new Parks());

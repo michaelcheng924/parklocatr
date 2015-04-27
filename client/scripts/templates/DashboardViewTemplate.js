@@ -1,5 +1,8 @@
 <div class="container view-container dashboard-container">
-  <center><h1>Dashboard</h1></center>
+  <center>
+  <h1>Dashboard</h1>
+  <%- message %>
+  </center>
 
   <hr>
 

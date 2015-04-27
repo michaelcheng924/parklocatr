@@ -7,6 +7,7 @@ var DashboardView = Backbone.View.extend({
     this.render();
 
     this.model.on('loggedIn', this.render, this);
+    this.model.on('change', this.render, this);
   },
 
   render: function() {
@@ -31,7 +32,7 @@ var DashboardView = Backbone.View.extend({
             },
             success: function(parksToVisit) {
               var template = _.template(data, {});
-              this.$el.html(template());
+              this.$el.html(template(this.model.attributes));
 
               var display = $('.parks-to-visit-display');
               display.html('');
