@@ -9,7 +9,7 @@ var DashboardView = Backbone.View.extend({
   },
 
   render: function() {
-    if (!this.model.get('loggedIn')) {
+    if (!this.model.get('token')) {
       $.ajax({
         url: 'scripts/templates/PreDashboardViewTemplate.js',
         dataType: 'html',

@@ -1,6 +1,6 @@
 var bodyParser = require('body-parser');
-var session = require('express-session');
 var bcrypt = require('bcrypt-nodejs');
+var jwt = require('jwt-simple');
 var User = require('./app/models/user');
 var Users = require('./app/collections/users');
 
@@ -19,7 +19,8 @@ module.exports = function(app) {
         if (user) {
           bcrypt.compare(req.body.password, user.attributes.password, function(err, match) {
             if (match) {
-              res.send(200);
+              var token = jwt.encode(user, 'secret');
+              res.json({token: token});
             } else {
               res.send('Incorrect password!');
             }
@@ -50,7 +51,8 @@ module.exports = function(app) {
             user.save().then(function(newUser) {
               console.log(newUser);
               Users.add(newUser);
-              res.send(200);
+              var token = jwt.encode(user, 'secret');
+              res.json({token: token});
             });
           });
           

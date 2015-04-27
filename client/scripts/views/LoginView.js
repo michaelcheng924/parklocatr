@@ -24,12 +24,12 @@ var LoginView = Backbone.View.extend({
           password: password
         }
       }).success(function(res) {
-        if (res === 'OK') {
+        if (res.token) {
           self.model.set({
             menu: 'Logout',
             url: '/logout',
-            class: 'logout',
-            loggedIn: true
+            className: 'logout',
+            token: res.token
           });
           console.log('Successfully logged in!');
         }
