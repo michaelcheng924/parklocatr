@@ -115,21 +115,28 @@ var MapView = Backbone.View.extend({
       // Create new collection and view for nearby search results
       var parks = new Parks();
       for (var i = 0, result; result = results[i]; i++) {
+
+        // Call createMarker, which creates listeners for each park
         createMarker(result);
         var park = new Park(result);
         self.model.get('parks').add(park);
       }
+
+      // Creates and renders parksView
       var parksView = new ParksView({collection: self.model.get('parks')});
     }
 
+    // Creates markers for each park and adds listeners
     function createMarker(place) {
 
+      // If place has photos, set photo variable for marker
       if (place.photos) {
         var photos = place.photos[0].getUrl({'maxWidth': 35, 'maxHeight': 35});
       } else {
         var photos = 'images/park-icon.png';
       }
 
+      // Create marker for park (animation, icon, position)
       var marker = new google.maps.Marker({
         map: map,
         animation: google.maps.Animation.DROP,
@@ -137,21 +144,28 @@ var MapView = Backbone.View.extend({
         position: place.geometry.location,
       });
 
+      // Listener for when icon/marker for a park is clicked
       google.maps.event.addListener(marker, 'click', function() {
+
+        // When icon is clicked, it will bounce twice
         toggleBounce();
         setTimeout(function() {
           marker.setAnimation(null);
         }, 1400);
 
+        // Get details for clicked park
         service.getDetails(place, function(result, status) {
+          // If error
           if (status != google.maps.places.PlacesServiceStatus.OK) {
             alert(status);
             return;
           }
 
+          // Create parkDetailsView
           var parkDetails = new ParkDetails(result);
           var parkDetailsView = new ParkDetailsView({model: parkDetails});
           
+          // Set content for infoWindow for individual parks when clicked
           infoWindow.setContent('<div class="info-window">' + result.name + '</div>');
           infoWindow.open(map, marker);
         });
