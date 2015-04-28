@@ -18,12 +18,12 @@ var NavbarView = Backbone.View.extend({
       this.router.navigate('/login', {trigger: true});
     },
     'click .logout': function() {
+      localStorage.removeItem('com.parklocatr');
       this.model.set({
-        menu: 'Login',
+        menu: 'Login/Signup',
         url: '/#login',
         className: 'login',
       });
-      localStorage.removeItem('com.parklocatr');
       this.router.navigate('/', {trigger: true});
     }
   },
