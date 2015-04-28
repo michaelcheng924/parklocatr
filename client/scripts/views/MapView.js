@@ -170,11 +170,13 @@ var MapView = Backbone.View.extend({
           infoWindow.open(map, marker);
         });
 
+        // After icon is clicked, scroll to parkDetailsView
         setTimeout(function() {
           $('body').animate({scrollTop: $('.right-column').offset().top}, 500);
         }, 1500);
       });
 
+      // Function to make icon bounce
       function toggleBounce() {
         if (marker.getAnimation() != null) {
           marker.setAnimation(null);
