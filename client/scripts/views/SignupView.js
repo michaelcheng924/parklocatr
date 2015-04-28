@@ -1,3 +1,4 @@
+// Same format as LoginView
 var SignupView = Backbone.View.extend({
 
   el: $('.signup-view'),

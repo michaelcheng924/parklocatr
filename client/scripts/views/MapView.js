@@ -114,16 +114,113 @@ var MapView = Backbone.View.extend({
 
       // Create new collection and view for nearby search results
       var parks = new Parks();
+      var d3Data = [];
       for (var i = 0, result; result = results[i]; i++) {
 
         // Call createMarker, which creates listeners for each park
         createMarker(result);
         var park = new Park(result);
         self.model.get('parks').add(park);
+
+        if (!result.rating) {
+          result.rating = 0;
+        }
+
+        var rating = result.rating.toString();
+
+        d3Data.push({text: result.name, count: rating});
       }
+      d3Data.sort(function(a,b) {
+        return b.count - a.count;
+      });
 
       // Creates and renders parksView
       var parksView = new ParksView({collection: self.model.get('parks')});
+
+      var bubbleChart = new d3.svg.BubbleChart({
+        supportResponsive: true,
+        //container: => use @default
+        size: 600,
+        //viewBoxSize: => use @default
+        innerRadius: 600 / 3.5,
+        //outerRadius: => use @default
+        radiusMin: 50,
+        //radiusMax: use @default
+        //intersectDelta: use @default
+        //intersectInc: use @default
+        //circleColor: use @default
+        data: {
+          items: d3Data.slice(0,9),
+          eval: function (item) {return item.count;},
+          classed: function (item) {return item.text.split(" ").join("");}
+        },
+        plugins: [
+          {
+            name: "central-click",
+            options: {
+              text: "(See more detail)",
+              style: {
+                "font-size": "12px",
+                "font-style": "italic",
+                "font-family": "Source Sans Pro, sans-serif",
+                //"font-weight": "700",
+                "text-anchor": "middle",
+                "fill": "white"
+              },
+              attr: {dy: "65px"},
+              centralClick: function() {
+                alert("Here is more details!!");
+              }
+            }
+          },
+          {
+            name: "lines",
+            options: {
+              format: [
+                {// Line #0
+                  textField: "count",
+                  classed: {count: true},
+                  style: {
+                    "font-size": "28px",
+                    "font-family": "Source Sans Pro, sans-serif",
+                    "text-anchor": "middle",
+                    fill: "white"
+                  },
+                  attr: {
+                    dy: "0px",
+                    x: function (d) {return d.cx;},
+                    y: function (d) {return d.cy;}
+                  }
+                },
+                {// Line #1
+                  textField: "text",
+                  classed: {text: true},
+                  style: {
+                    "font-size": "14px",
+                    "font-family": "Source Sans Pro, sans-serif",
+                    "text-anchor": "middle",
+                    fill: "white"
+                  },
+                  attr: {
+                    dy: "20px",
+                    x: function (d) {return d.cx;},
+                    y: function (d) {return d.cy;}
+                  }
+                }
+              ],
+              centralFormat: [
+                {// Line #0
+                  style: {"font-size": "50px"},
+                  attr: {}
+                },
+                {// Line #1
+                  style: {"font-size": "30px"},
+                  attr: {dy: "40px"}
+                }
+              ]
+            }
+          }]
+      });
     }
 
     // Creates markers for each park and adds listeners

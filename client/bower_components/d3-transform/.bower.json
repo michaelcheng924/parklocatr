@@ -1,0 +1,13 @@
+{
+  "name": "d3-transform",
+  "homepage": "https://github.com/d3/d3-transform",
+  "_release": "fdf27f7ea6",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "fdf27f7ea6ea6bc515efec2bc3f4fce0c86abccb"
+  },
+  "_source": "git://github.com/d3/d3-transform.git",
+  "_target": "*",
+  "_originalSource": "d3-transform"
+}

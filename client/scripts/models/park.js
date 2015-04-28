@@ -1,7 +1,7 @@
 var Park = Backbone.Model.extend({
   defaults: {
     // Defaults for Google Maps nearby search info
-    photos: '',
+    name: '',
     rating: 'n/a',
     vicinity: '',
 
