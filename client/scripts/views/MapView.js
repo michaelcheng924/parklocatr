@@ -3,6 +3,7 @@ var MapView = Backbone.View.extend({
   el: $('#map-canvas'),
 
   initialize: function() {
+    // Initialize Google Maps
     google.maps.event.addDomListener(window, 'load', this.render.bind(this));
   },
 
@@ -11,34 +12,51 @@ var MapView = Backbone.View.extend({
 
     var service;
 
+    // Centers Google Map on the United States
     var mapOptions = {
       center: new google.maps.LatLng(37.6, -95.665),
       zoom: 4
     };
+
+    // Selects the element to inject Google Maps into
     map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
 
+    // Initialize infoWindow (individual parks)
+    // Global so other views can access
     infoWindow = new google.maps.InfoWindow();
+
+    // Initialize Google Maps service
     service = new google.maps.places.PlacesService(map);
 
-    var input = /** @type {HTMLInputElement} */(
-        document.getElementById('pac-input'));
+    // Selects the autocomplete input box
+    var input = (document.getElementById('pac-input'));
 
+    // Pushes autocomplete input box into controls
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
+    // Initialize autocomplete
     var autocomplete = new google.maps.places.Autocomplete(input);
     autocomplete.bindTo('bounds', map);
 
-    /*var*/ infowindow = new google.maps.InfoWindow();
+    // Initialize infowindow (input location)
+    infowindow = new google.maps.InfoWindow();
+
+    // Creates new marker
     var marker = new google.maps.Marker({
       map: map,
       anchorPoint: new google.maps.Point(0, -29)
     });
 
+    // Listens for an autocomplete input
     google.maps.event.addListener(autocomplete, 'place_changed', function() {
+
+      // Close the infowindow and marker that are currently open
       infowindow.close();
       marker.setVisible(false);
       var place = autocomplete.getPlace();
+
+      // Set the heading of parksView to reference input location
       $('.parks-view-heading').html('<h2>Parks around ' + place.formatted_address + '</h2>');
       if (!place.geometry) {
         return;
@@ -48,16 +66,18 @@ var MapView = Backbone.View.extend({
       map.setCenter(place.geometry.location);
       map.setZoom(13);
 
-      marker.setIcon(/** @type {google.maps.Icon} */({
+      // Settings for input location marker
+      marker.setIcon({
         url: place.icon,
         size: new google.maps.Size(71, 71),
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(17, 34),
         scaledSize: new google.maps.Size(35, 35)
-      }));
+      });
       marker.setPosition(place.geometry.location);
       marker.setVisible(true);
 
+      // Create address from components
       var address = '';
       if (place.address_components) {
         address = [
@@ -67,12 +87,15 @@ var MapView = Backbone.View.extend({
         ].join(' ');
       }
 
+      // Set input location content
       infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
       infowindow.open(map, marker);
 
+      // Perform nearby search for the input location bounds
       google.maps.event.addListenerOnce(map, 'bounds_changed', performSearch);
     });
 
+    // Perform nearby search for the input location bounds
     function performSearch() {
       var request = {
         bounds: map.getBounds(),
@@ -81,11 +104,15 @@ var MapView = Backbone.View.extend({
       service.nearbySearch(request, callback);
     }
 
+    // Response to nearby search
     function callback(results, status) {
+      // If there is an error...
       if (status != google.maps.places.PlacesServiceStatus.OK) {
         alert(status);
         return;
       }
+
+      // Create new collection and view for nearby search results
       var parks = new Parks();
       for (var i = 0, result; result = results[i]; i++) {
         createMarker(result);
