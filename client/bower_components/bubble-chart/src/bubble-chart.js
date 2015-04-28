@@ -74,7 +74,8 @@
       var options = self.options;
       while (circles.length < self.items.length && ++interval < self.intervalMax) {
         var val = self.values[circles.length];
-        var rad = Math.max((val * options.radiusMax) / self.valueMax, options.radiusMin);
+
+        var rad = (val - 3) * 40;
         var dist = self.innerRadius + rad + Math.random() * (self.outerRadius - self.innerRadius - rad * 2);
         var angle = Math.random() * pi2;
         var cx = self.centralPoint + dist * Math.cos(angle);

@@ -113,7 +113,7 @@ var MapView = Backbone.View.extend({
       }
 
       // Create new collection and view for nearby search results
-      var parks = new Parks();
+      self.model.get('parks').reset();
       var d3Data = [];
 
       // Sort parks by rating
@@ -227,7 +227,7 @@ var MapView = Backbone.View.extend({
         //viewBoxSize: => use @default
         innerRadius: 600 / 3.5,
         //outerRadius: => use @default
-        radiusMin: 50,
+        radiusMin: 25,
         //radiusMax: use @default
         //intersectDelta: use @default
         //intersectInc: use @default
