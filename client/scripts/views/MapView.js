@@ -166,7 +166,7 @@ var MapView = Backbone.View.extend({
           var parkDetailsView = new ParkDetailsView({model: parkDetails});
           
           // Set content for infoWindow for individual parks when clicked
-          infoWindow.setContent('<div class="info-window">' + result.name + '</div>');
+          infoWindow.setContent('<div class="info-window"><strong>' + result.name + '</strong></div>');
           infoWindow.open(map, marker);
         });
 
