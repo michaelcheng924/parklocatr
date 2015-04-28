@@ -7,7 +7,7 @@ var Users = require('./app/collections/users');
 var ParkToVisit = require('./app/models/parkToVisit');
 var ParksToVisit = require('./app/collections/parksToVisit');
 var VisitedPark = require('./app/models/visitedPark');
-var VisitedParks = require('./app/collections/VisitedParks');
+var VisitedParks = require('./app/collections/visitedParks');
 
 module.exports = function(app) {
   
