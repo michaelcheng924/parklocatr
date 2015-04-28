@@ -12,10 +12,13 @@ var LoginView = Backbone.View.extend({
     'click .login-submit': function(e) {
       e.preventDefault();
 
+      var self = this;
+
+      // Get username and password from form
       var username = $('.username-login').val();
       var password = $('.password-login').val();
-      var self = this;
       
+      // POST request to '/login'
       $.ajax({
         type: 'POST',
         url: '/login',
@@ -24,6 +27,7 @@ var LoginView = Backbone.View.extend({
           password: password
         }
       }).success(function(res) {
+        // If successful, change navbarSettings and add greeting to dashboard
         if (res.token) {
           self.model.set({
             menu: 'Logout',
@@ -31,11 +35,18 @@ var LoginView = Backbone.View.extend({
             className: 'logout',
             message: 'Greetings, ' + username + '!'
           });
+
+          // Store token in localStorage for future authentication
           localStorage.setItem('com.parklocatr', res.token);
+
+          // Calls login, which will trigger a re-render of the dashboard
           self.model.login();
+
           console.log('Successfully logged in!');
         }
       }).then(function() {
+        // Navigate to dashboard page
+        // setTimeout to make sure everything has been loaded beforehand
         setTimeout(function() {
           self.router.navigate('/dashboard', {trigger: true});
         },20);
