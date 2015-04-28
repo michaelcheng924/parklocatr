@@ -7,13 +7,17 @@ var Router = Backbone.Router.extend({
   },
 
   index: function() {
+    // Fade in main page after other elements fade out
     setTimeout(function() {
       $('.main-page').fadeIn();
     }, 500);
+
+    // Fade out elements that are not main page
     $('.login-view').fadeOut();
     $('.signup-view').fadeOut();
     $('.dashboard-view').fadeOut();
 
+    // Sets the correct li in navbar to be active
     $('nav li').removeClass('active');
     $('.home').addClass('active');
   },

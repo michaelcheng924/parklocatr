@@ -35,7 +35,7 @@ var App = Backbone.Model.extend({
     this.get('signupView').$el.hide();
     this.get('dashboardView').$el.hide();
 
-    // Re-renders dashboard when user signs in
+    // Re-renders dashboard when user adds a park
     // Triggered from Parks.js
     this.get('parks').on('updateTrigger', function() {
       this.get('dashboardView').render();

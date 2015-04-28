@@ -1,5 +1,6 @@
 var ParkDetails = Backbone.Model.extend({
   defaults: {
+    // Defaults for Google Maps detail search
     name: '',
     adr_address: '',
     formatted_address: '',
