@@ -95,7 +95,7 @@ var MapView = Backbone.View.extend({
       google.maps.event.addListenerOnce(map, 'bounds_changed', performSearch);
     });
 
-    // Perform nearby search for the input location bounds
+    // Perform nearby search for the input location getBounds
     function performSearch() {
       var request = {
         bounds: map.getBounds(),
@@ -233,7 +233,7 @@ var MapView = Backbone.View.extend({
         //intersectInc: use @default
         //circleColor: use @default
         data: {
-          items: data.slice(0,9),
+          items: data.slice(0,8),
           eval: function (item) {return item.count;},
           classed: function (item) {return item.text.split(" ").join("");}
         },
