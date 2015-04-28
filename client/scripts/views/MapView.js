@@ -170,12 +170,12 @@ var MapView = Backbone.View.extend({
       // Listener for when icon/marker for a park is clicked
       google.maps.event.addListener(marker, 'click', function() {
 
-        getPlaceDetails(place);
+        getPlaceDetails(place, marker);
 
       });
     }
 
-    function getPlaceDetails(place) {
+    function getPlaceDetails(place, marker) {
       // When icon is clicked, it will bounce twice
       toggleBounce();
       setTimeout(function() {
