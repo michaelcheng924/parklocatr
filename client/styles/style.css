@@ -219,6 +219,7 @@ h2 {
 .bubbleChart svg{
   background: #000000;
   border: 1px solid #82817F;
+  border-radius: 15px;
 }
 
 /* =============== MEDIA QUERIES ================= */
