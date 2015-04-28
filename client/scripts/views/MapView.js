@@ -115,7 +115,12 @@ var MapView = Backbone.View.extend({
       // Create new collection and view for nearby search results
       var parks = new Parks();
       var d3Data = [];
-      for (var i = 0, result; result = results[i]; i++) {
+
+      var sortedResults = results.sort(function(a,b) {
+        return b.rating - a.rating;
+      });
+
+      for (var i = 0, result; result = sortedResults[i]; i++) {
 
         // Call createMarker, which creates listeners for each park
         createMarker(result);
@@ -157,24 +162,6 @@ var MapView = Backbone.View.extend({
           classed: function (item) {return item.text.split(" ").join("");}
         },
         plugins: [
-          {
-            name: "central-click",
-            options: {
-              text: "(See details!)",
-              style: {
-                "font-size": "12px",
-                "font-style": "italic",
-                "font-family": "Source Sans Pro, sans-serif",
-                //"font-weight": "700",
-                "text-anchor": "middle",
-                "fill": "white"
-              },
-              attr: {dy: "65px"},
-              centralClick: function() {
-                alert("Here is more details!!");
-              }
-            }
-          },
           {
             name: "lines",
             options: {
@@ -247,7 +234,7 @@ var MapView = Backbone.View.extend({
       google.maps.event.addListener(marker, 'click', function() {
 
         getPlaceDetails(place);
-        
+
       });
     }
 
