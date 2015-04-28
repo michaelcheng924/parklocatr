@@ -116,6 +116,7 @@ var MapView = Backbone.View.extend({
       var parks = new Parks();
       var d3Data = [];
 
+      // Sort parks by rating
       var sortedResults = results.sort(function(a,b) {
         if (!a.rating) {
           a.rating = 0;
@@ -145,74 +146,7 @@ var MapView = Backbone.View.extend({
       // Creates and renders parksView
       var parksView = new ParksView({collection: self.model.get('parks')});
 
-      $('.bubbleChart').html('');
-
-      var bubbleChart = new d3.svg.BubbleChart({
-        supportResponsive: true,
-        //container: => use @default
-        size: 600,
-        //viewBoxSize: => use @default
-        innerRadius: 600 / 3.5,
-        //outerRadius: => use @default
-        radiusMin: 50,
-        //radiusMax: use @default
-        //intersectDelta: use @default
-        //intersectInc: use @default
-        //circleColor: use @default
-        data: {
-          items: d3Data.slice(0,9),
-          eval: function (item) {return item.count;},
-          classed: function (item) {return item.text.split(" ").join("");}
-        },
-        plugins: [
-          {
-            name: "lines",
-            options: {
-              format: [
-                {// Line #0
-                  textField: "count",
-                  classed: {count: true},
-                  style: {
-                    "font-size": "28px",
-                    "font-family": "Source Sans Pro, sans-serif",
-                    "text-anchor": "middle",
-                    fill: "white"
-                  },
-                  attr: {
-                    dy: "0px",
-                    x: function (d) {return d.cx;},
-                    y: function (d) {return d.cy;}
-                  }
-                },
-                {// Line #1
-                  textField: "text",
-                  classed: {text: true},
-                  style: {
-                    "font-size": "14px",
-                    "font-family": "Source Sans Pro, sans-serif",
-                    "text-anchor": "middle",
-                    fill: "white"
-                  },
-                  attr: {
-                    dy: "20px",
-                    x: function (d) {return d.cx;},
-                    y: function (d) {return d.cy;}
-                  }
-                }
-              ],
-              centralFormat: [
-                {// Line #0
-                  style: {"font-size": "50px"},
-                  attr: {}
-                },
-                {// Line #1
-                  style: {"font-size": "30px"},
-                  attr: {dy: "40px"}
-                }
-              ]
-            }
-          }]
-      });
+      createBubbleChart(d3Data);
     }
 
     // Creates markers for each park and adds listeners
@@ -281,6 +215,77 @@ var MapView = Backbone.View.extend({
           marker.setAnimation(google.maps.Animation.BOUNCE);
         }
       }
+    }
+
+    function createBubbleChart(data) {
+      $('.bubbleChart').html('');
+
+      var bubbleChart = new d3.svg.BubbleChart({
+        supportResponsive: true,
+        //container: => use @default
+        size: 600,
+        //viewBoxSize: => use @default
+        innerRadius: 600 / 3.5,
+        //outerRadius: => use @default
+        radiusMin: 50,
+        //radiusMax: use @default
+        //intersectDelta: use @default
+        //intersectInc: use @default
+        //circleColor: use @default
+        data: {
+          items: data.slice(0,9),
+          eval: function (item) {return item.count;},
+          classed: function (item) {return item.text.split(" ").join("");}
+        },
+        plugins: [
+          {
+            name: "lines",
+            options: {
+              format: [
+                {// Line #0
+                  textField: "count",
+                  classed: {count: true},
+                  style: {
+                    "font-size": "28px",
+                    "font-family": "Source Sans Pro, sans-serif",
+                    "text-anchor": "middle",
+                    fill: "white"
+                  },
+                  attr: {
+                    dy: "0px",
+                    x: function (d) {return d.cx;},
+                    y: function (d) {return d.cy;}
+                  }
+                },
+                {// Line #1
+                  textField: "text",
+                  classed: {text: true},
+                  style: {
+                    "font-size": "14px",
+                    "font-family": "Source Sans Pro, sans-serif",
+                    "text-anchor": "middle",
+                    fill: "white"
+                  },
+                  attr: {
+                    dy: "20px",
+                    x: function (d) {return d.cx;},
+                    y: function (d) {return d.cy;}
+                  }
+                }
+              ],
+              centralFormat: [
+                {// Line #0
+                  style: {"font-size": "50px"},
+                  attr: {}
+                },
+                {// Line #1
+                  style: {"font-size": "30px"},
+                  attr: {dy: "40px"}
+                }
+              ]
+            }
+          }]
+      });
     }
   }
 });

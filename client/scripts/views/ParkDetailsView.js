@@ -7,6 +7,8 @@ var ParkDetailsView = Backbone.View.extend({
   },
 
   render: function() {
+    // Sorting in MapView caused some ratings to be 0
+    // If a rating is 0, set it to 'n/a'
     if (this.model.get('rating') === 0) {
       this.model.set('rating', 'n/a');
     }
