@@ -22,33 +22,9 @@ var DashboardView = Backbone.View.extend({
     } else {
       self.getTemplate('scripts/templates/DashboardViewTemplate.js', self)
       .then(function() {
-        $.ajax({
-          url: '/parks-to-visit',
-          headers: {
-            'x-access-token': localStorage.getItem('com.parklocatr')
-          },
-          success: function(parksToVisit) {
-            self.displayDashboardParks(parksToVisit, '.parks-to-visit-display');
-            // var display = $('.parks-to-visit-display');
-            // display.html('');
-            // _.each(parksToVisit, function(park) {
-            //   display.append('<h3>' + park.name + '</h3><div>' + park.address + '</div>');
-            // });
-          }
-        }).then(function() {
-          $.ajax({
-            url: '/visited-parks',
-            headers: {
-              'x-access-token': localStorage.getItem('com.parklocatr')
-            },
-            success: function(visitedParks) {
-              var display = $('.visited-parks-display');
-              display.html('');
-              _.each(visitedParks, function(park) {
-                display.append('<h3>' + park.name + '</h3><div>' + park.address + '</div>');
-              });
-            }
-          });
+        self.getDashboardParks('/parks-to-visit', self, '.parks-to-visit-display')
+      .then(function() {
+        self.getDashboardParks('/visited-parks', self, '.visited-parks-display');
         });
       });
     }
@@ -69,8 +45,16 @@ var DashboardView = Backbone.View.extend({
     self.$el.html(template(self.model.attributes));
   },
 
-  getDashboardParks: function(url) {
-
+  getDashboardParks: function(url, self, className) {
+    return $.ajax({
+      url: url,
+      headers: {
+        'x-access-token': localStorage.getItem('com.parklocatr')
+      },
+      success: function(data) {
+        self.displayDashboardParks(data, className);
+      }
+    });
   },
 
   displayDashboardParks: function(data, className) {
