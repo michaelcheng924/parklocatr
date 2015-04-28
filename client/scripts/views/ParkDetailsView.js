@@ -6,16 +6,8 @@ var ParkDetailsView = Backbone.View.extend({
     this.render();
   },
 
-  events: {
-    'mouseover .park-photo': function() {
-      $('park-photo').popover({
-        html: true,
-        content: 'hello!'
-      });
-    }
-  },
-
   render: function() {
+    // Get and render parkDetailsView template
     $.ajax({
       url: 'scripts/templates/ParkDetailsViewTemplate.js',
       dataType: 'html',
