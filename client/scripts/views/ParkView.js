@@ -22,6 +22,10 @@ var ParkView = Backbone.View.extend({
   },
 
   render: function() {
+    if (this.model.get('rating') === 0) {
+      this.model.set('rating', 'n/a');
+    }
+
     return this.$el.html(this.template(this.model.attributes));
   },
 

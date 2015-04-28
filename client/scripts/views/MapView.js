@@ -117,6 +117,12 @@ var MapView = Backbone.View.extend({
       var d3Data = [];
 
       var sortedResults = results.sort(function(a,b) {
+        if (!a.rating) {
+          a.rating = 0;
+        }
+        if (!b.rating) {
+          b.rating = 0;
+        }
         return b.rating - a.rating;
       });
 
@@ -135,9 +141,6 @@ var MapView = Backbone.View.extend({
 
         d3Data.push({text: result.name, count: rating});
       }
-      d3Data.sort(function(a,b) {
-        return b.count - a.count;
-      });
 
       // Creates and renders parksView
       var parksView = new ParksView({collection: self.model.get('parks')});

@@ -7,6 +7,10 @@ var ParkDetailsView = Backbone.View.extend({
   },
 
   render: function() {
+    if (this.model.get('rating') === 0) {
+      this.model.set('rating', 'n/a');
+    }
+
     // Get and render parkDetailsView template
     $.ajax({
       url: 'scripts/templates/ParkDetailsViewTemplate.js',
