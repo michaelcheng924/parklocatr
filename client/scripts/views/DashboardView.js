@@ -16,37 +16,25 @@ var DashboardView = Backbone.View.extend({
   },
 
   render: function() {
+    var self = this;
     if (!localStorage.getItem('com.parklocatr')) {
-      $.ajax({
-        url: 'scripts/templates/PreDashboardViewTemplate.js',
-        dataType: 'html',
-        success: function(data) {
-          var template = _.template(data, {});
-          this.$el.html(template());
-        }.bind(this)
-      });
+      self.getTemplate('scripts/templates/PreDashboardViewTemplate.js', self);
     } else {
-      $.ajax({
-        url: 'scripts/templates/DashboardViewTemplate.js',
-        dataType: 'html',
-        success: function(data) {
-          var template = _.template(data, {});
-          this.$el.html(template(this.model.attributes));
-        }.bind(this)
-      }).then(function() {
+      self.getTemplate('scripts/templates/DashboardViewTemplate.js', self)
+      .then(function() {
         $.ajax({
           url: '/parks-to-visit',
           headers: {
             'x-access-token': localStorage.getItem('com.parklocatr')
           },
           success: function(parksToVisit) {
-
-            var display = $('.parks-to-visit-display');
-            display.html('');
-            _.each(parksToVisit, function(park) {
-              display.append('<h3>' + park.name + '</h3><div>' + park.address + '</div>');
-            });
-          }.bind(this)
+            self.displayDashboardParks(parksToVisit, '.parks-to-visit-display');
+            // var display = $('.parks-to-visit-display');
+            // display.html('');
+            // _.each(parksToVisit, function(park) {
+            //   display.append('<h3>' + park.name + '</h3><div>' + park.address + '</div>');
+            // });
+          }
         }).then(function() {
           $.ajax({
             url: '/visited-parks',
@@ -59,18 +47,37 @@ var DashboardView = Backbone.View.extend({
               _.each(visitedParks, function(park) {
                 display.append('<h3>' + park.name + '</h3><div>' + park.address + '</div>');
               });
-            }.bind(this)
+            }
           });
         });
       });
     }
   },
 
+  getTemplate: function(url, self) {
+    return $.ajax({
+      url: url,
+      dataType: 'html',
+      success: function(data) {
+        self.displayTemplate(data, self);
+      }
+    });
+  },
+
+  displayTemplate: function(data, self) {
+    var template = _.template(data, {});
+    self.$el.html(template(self.model.attributes));
+  },
+
   getDashboardParks: function(url) {
 
   },
 
-  displayDashboardParks: function(data, display) {
-
+  displayDashboardParks: function(data, className) {
+    var display = $(className);
+    display.html('');
+    _.each(data, function(park) {
+      display.append('<h3>' + park.name + '</h3><div>' + park.address + '</div>');
+    });
   }
 });
