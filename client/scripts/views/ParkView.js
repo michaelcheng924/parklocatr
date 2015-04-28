@@ -59,7 +59,7 @@ var ParkView = Backbone.View.extend({
       });
 
       // On click, scroll to top to see bouncing icon
-      window.scrollTo(0,0);
+      window.scrollTo(0,200);
 
       // Icon bounces twice
       setTimeout(function() {

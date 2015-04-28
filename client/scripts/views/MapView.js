@@ -137,6 +137,8 @@ var MapView = Backbone.View.extend({
       // Creates and renders parksView
       var parksView = new ParksView({collection: self.model.get('parks')});
 
+      $('.bubbleChart').html('');
+
       var bubbleChart = new d3.svg.BubbleChart({
         supportResponsive: true,
         //container: => use @default
@@ -158,7 +160,7 @@ var MapView = Backbone.View.extend({
           {
             name: "central-click",
             options: {
-              text: "(See more detail)",
+              text: "(See details!)",
               style: {
                 "font-size": "12px",
                 "font-style": "italic",
@@ -244,38 +246,46 @@ var MapView = Backbone.View.extend({
       // Listener for when icon/marker for a park is clicked
       google.maps.event.addListener(marker, 'click', function() {
 
-        // When icon is clicked, it will bounce twice
-        toggleBounce();
-        setTimeout(function() {
-          marker.setAnimation(null);
-        }, 1400);
-
-        // Get details for clicked park
-        service.getDetails(place, function(result, status) {
-          // If error
-          if (status != google.maps.places.PlacesServiceStatus.OK) {
-            alert(status);
-            return;
-          }
-
-          // Create parkDetailsView
-          var parkDetails = new ParkDetails(result);
-          var parkDetailsView = new ParkDetailsView({model: parkDetails});
-          
-          // Set content for infoWindow for individual parks when clicked
-          infoWindow.setContent('<div class="info-window"><strong>' + result.name + '</strong></div>');
-          infoWindow.open(map, marker);
-        });
-
-        // After icon is clicked, scroll to parkDetailsView
-        setTimeout(function() {
-          $('body').animate({scrollTop: $('.right-column').offset().top}, 500);
-        }, 1500);
+        getPlaceDetails(place);
+        
       });
+    }
+
+    function getPlaceDetails(place) {
+      // When icon is clicked, it will bounce twice
+      toggleBounce();
+      setTimeout(function() {
+        marker.setAnimation(null);
+      }, 1400);
+
+      // Get details for clicked park
+      service.getDetails(place, function(result, status) {
+        // If error
+        if (status != google.maps.places.PlacesServiceStatus.OK) {
+          alert(status);
+          return;
+        }
+
+        // Create parkDetailsView
+        var parkDetails = new ParkDetails(result);
+        var parkDetailsView = new ParkDetailsView({model: parkDetails});
+        
+        // Set content for infoWindow for individual parks when clicked
+        infoWindow.setContent('<div class="info-window"><strong>' + result.name + '</strong></div>');
+        infoWindow.open(map, marker);
+      });
+
+      // On click, scroll to top to see bouncing icon
+      window.scrollTo(0,200);
+
+      // After icon stops bouncing, scroll to parkDetailsView
+      setTimeout(function() {
+        $('body').animate({scrollTop: $('.right-column').offset().top}, 500);
+      }, 1500);
 
       // Function to make icon bounce
       function toggleBounce() {
-        if (marker.getAnimation() != null) {
+        if (marker.getAnimation() !== null) {
           marker.setAnimation(null);
         } else {
           marker.setAnimation(google.maps.Animation.BOUNCE);
